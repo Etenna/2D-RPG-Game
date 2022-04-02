@@ -70,4 +70,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-Assets/Sprites/
+
+# Ignoring Sprites and Tileset folder
+[Aa]ssets/Sprites/
+[Aa]ssets/Tileset/

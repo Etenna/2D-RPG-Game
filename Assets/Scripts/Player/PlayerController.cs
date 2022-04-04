@@ -19,11 +19,15 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            MovePlayer();
+        }
+
+        private void MovePlayer()
+        {
             movementInput.x = Input.GetAxisRaw("Horizontal");
             movementInput.y = Input.GetAxisRaw("Vertical");
 
-            movementInput.Normalize();  
-
+            movementInput.Normalize();
             playerRb.velocity = movementInput * playerMovementSpeed;
         }
     }

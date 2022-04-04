@@ -9,7 +9,13 @@ namespace Player
 
         [SerializeField] Rigidbody2D playerRb;
         [SerializeField] float playerMovementSpeed = 5f;
+
         Vector2 movementInput;
+        Animator playerAnimator;
+        private void Awake()
+        {
+            playerAnimator = GetComponent<Animator>();
+        }
         // Start is called before the first frame update
         void Start()
         {
@@ -27,8 +33,12 @@ namespace Player
             movementInput.x = Input.GetAxisRaw("Horizontal");
             movementInput.y = Input.GetAxisRaw("Vertical");
 
+
             movementInput.Normalize();
             playerRb.velocity = movementInput * playerMovementSpeed;
+
+            playerAnimator.SetFloat("movementX",playerRb.velocity.x);
+            playerAnimator.SetFloat("movementY", playerRb.velocity.y);
         }
     }
 }

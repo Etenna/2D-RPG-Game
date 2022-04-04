@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRb: {fileID: 1261396680}
-  playerMovementSpeed: 3
+  playerMovementSpeed: 1
 --- !u!95 &1261396683
 Animator:
   serializedVersion: 4

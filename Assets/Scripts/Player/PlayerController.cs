@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player
@@ -37,8 +35,20 @@ namespace Player
             movementInput.Normalize();
             playerRb.velocity = movementInput * playerMovementSpeed;
 
-            playerAnimator.SetFloat("movementX",playerRb.velocity.x);
+            SetPlayerWalkAndIdleAnimation();
+
+        }
+
+        private void SetPlayerWalkAndIdleAnimation()
+        {
+            playerAnimator.SetFloat("movementX", playerRb.velocity.x);
             playerAnimator.SetFloat("movementY", playerRb.velocity.y);
+
+            if (movementInput.x == 1 || movementInput.x == -1 || movementInput.y == 1 || movementInput.y == -1)
+            {
+                playerAnimator.SetFloat("lastX", movementInput.x);
+                playerAnimator.SetFloat("lastY", movementInput.y);
+            }
         }
     }
 }

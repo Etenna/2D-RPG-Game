@@ -4,20 +4,31 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController instance;
 
-        [SerializeField] Rigidbody2D playerRb;
         [SerializeField] float playerMovementSpeed = 5f;
+        [SerializeField] Rigidbody2D playerRb;
 
         Vector2 movementInput;
         Animator playerAnimator;
         private void Awake()
         {
+            if (instance != null && instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                instance = this;
+            }
+
+            DontDestroyOnLoad(this);
+
             playerAnimator = GetComponent<Animator>();
         }
         // Start is called before the first frame update
         void Start()
         {
-            DontDestroyOnLoad(this);
         }
 
         // Update is called once per frame

@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Area Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 2758283534025369789, guid: c3e0ddf5190fb144ea369f63c8a1cb04, type: 3}
+      propertyPath: sceneToLoad
+      value: TestScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2758283534025369790, guid: c3e0ddf5190fb144ea369f63c8a1cb04, type: 3}
       propertyPath: m_RootOrder
       value: 1

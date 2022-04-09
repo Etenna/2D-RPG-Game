@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64935a4e2978b2e42aeb47597d4f47a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAreaName: TestScene - 2
+  transitionAreaName: 
 --- !u!1 &6896647769770947897
 GameObject:
   m_ObjectHideFlags: 0

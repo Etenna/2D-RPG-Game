@@ -276,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783836314727201810, guid: c3e0ddf5190fb144ea369f63c8a1cb04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.056
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 2783836314727201811, guid: c3e0ddf5190fb144ea369f63c8a1cb04, type: 3}
       propertyPath: transitionAreaName

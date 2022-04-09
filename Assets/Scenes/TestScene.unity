@@ -521,11 +521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8227934087ad94f9a494781af1f45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1194533081 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7653423314862810552, guid: f0c6a04cebbae0b47a92d2cc0daca31f, type: 3}
-  m_PrefabInstance: {fileID: 7653423315787728767}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1354157055
 GameObject:
   m_ObjectHideFlags: 1
@@ -796,10 +791,18 @@ PrefabInstance:
     - target: {fileID: 5476084297407462217, guid: c9185f7123993ec4baa07c302c7453ab, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 1194533081}
+      objectReference: {fileID: 0}
     - target: {fileID: 6719825322522538988, guid: c9185f7123993ec4baa07c302c7453ab, type: 3}
       propertyPath: m_Name
       value: CameraManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150176375556725946, guid: c9185f7123993ec4baa07c302c7453ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150176375556725946, guid: c9185f7123993ec4baa07c302c7453ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.31
       objectReference: {fileID: 0}
     - target: {fileID: 8204307197935076551, guid: c9185f7123993ec4baa07c302c7453ab, type: 3}
       propertyPath: m_RootOrder

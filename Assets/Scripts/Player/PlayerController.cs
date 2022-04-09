@@ -11,6 +11,11 @@ namespace Player
 
         Vector2 movementInput;
         Animator playerAnimator;
+
+        public string transitionName;
+
+
+        
         private void Awake()
         {
             if (instance != null && instance != this)

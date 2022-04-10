@@ -73,4 +73,4 @@ crashlytics-build.properties
 
 # Ignoring Sprites and Tileset folder
 [Aa]ssets/Sprites/
-[Aa]ssets/Tileset/
+[Aa]ssets/Tile Asset/

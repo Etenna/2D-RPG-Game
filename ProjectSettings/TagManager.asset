@@ -47,11 +47,17 @@ TagManager:
   - name: Foreground
     uniqueID: 3744343353
     locked: 0
+  - name: Background Decoration
+    uniqueID: 2605247567
+    locked: 0
   - name: Player
     uniqueID: 3746083061
     locked: 0
   - name: Background Object Layer
     uniqueID: 1884983173
+    locked: 0
+  - name: Background Tree Decoration
+    uniqueID: 1126931749
     locked: 0
   - name: Player Object Layer
     uniqueID: 1109537065

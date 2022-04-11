@@ -1,0 +1,4 @@
+repository "2D_RPG@Etenna@cloud"
+  path "/"
+    br "/main"
+    co "/main"

@@ -30,13 +30,12 @@ public class PlayerController : MonoBehaviour
         }
 
         DontDestroyOnLoad(this);
-        
         playerAnimator = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        //tilemap.ResizeBounds();
+        tilemap.CompressBounds();
         bottomLeftEdge = tilemap.localBounds.min;
         topRightEdge = tilemap.localBounds.max;
     }
@@ -49,20 +48,15 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        Debug.Log(bottomLeftEdge.y);
-        Debug.Log(bottomLeftEdge.x);
-        Debug.Log(bottomLeftEdge.z);
         SetPlayerInsideTheMap();
 
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
 
-
         movementInput.Normalize();
         playerRb.velocity = movementInput * playerMovementSpeed;
 
         SetPlayerWalkAndIdleAnimation();
-
     }
 
     private void SetPlayerInsideTheMap()

@@ -10034,6 +10034,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &794025327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7653423314862810555, guid: f0c6a04cebbae0b47a92d2cc0daca31f, type: 3}
+  m_PrefabInstance: {fileID: 485738997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &833528315
 GameObject:
   m_ObjectHideFlags: 0
@@ -32784,6 +32789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1145473035}
   - component: {fileID: 1145473034}
+  - component: {fileID: 1145473036}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -32825,6 +32831,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1145473036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145473033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540718e0929efb841bbd4441af45b624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundTilemap: {fileID: 833528318}
+  playerToClamp: {fileID: 794025327}
 --- !u!1001 &1208254783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32931,7 +32951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8150176375556725946, guid: c9185f7123993ec4baa07c302c7453ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00013834114
+      value: 0.00013184224
       objectReference: {fileID: 0}
     - target: {fileID: 8150176375556725946, guid: c9185f7123993ec4baa07c302c7453ab, type: 3}
       propertyPath: m_LocalPosition.y

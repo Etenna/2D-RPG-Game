@@ -14,10 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public string transitionName;
 
-    Vector3 bottomLeftEdge;
-    Vector3 topRightEdge;
-
-    [SerializeField] Tilemap tilemap;
+    
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -35,9 +32,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tilemap.CompressBounds();
-        bottomLeftEdge = tilemap.localBounds.min;
-        topRightEdge = tilemap.localBounds.max;
+        
     }
 
     // Update is called once per frame
@@ -48,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        SetPlayerInsideTheMap();
+      
 
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
@@ -59,14 +54,7 @@ public class PlayerController : MonoBehaviour
         SetPlayerWalkAndIdleAnimation();
     }
 
-    private void SetPlayerInsideTheMap()
-    {
-        transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, bottomLeftEdge.x, topRightEdge.x),
-            Mathf.Clamp(transform.position.y, bottomLeftEdge.y, topRightEdge.y),
-            Mathf.Clamp(transform.position.z, bottomLeftEdge.z, topRightEdge.z)
-        );
-    }
+   
 
     private void SetPlayerWalkAndIdleAnimation()
     {
@@ -80,9 +68,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(tilemap.localBounds.min, tilemap.localBounds.max);
-    }
 }

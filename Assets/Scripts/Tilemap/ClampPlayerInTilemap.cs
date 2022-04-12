@@ -7,6 +7,8 @@ public class ClampPlayerInTilemap : MonoBehaviour
 {
     [SerializeField] Tilemap backgroundTilemap;
     [SerializeField] GameObject playerToClamp;
+    [SerializeField] float clampOffset = 0;
+
 
     Vector3 bottomLeftEdge;
     Vector3 topRightEdge;
@@ -17,8 +19,8 @@ public class ClampPlayerInTilemap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bottomLeftEdge = backgroundTilemap.localBounds.min;
-        topRightEdge = backgroundTilemap.localBounds.max;
+        bottomLeftEdge = backgroundTilemap.localBounds.min+new Vector3(clampOffset,clampOffset,0);
+        topRightEdge = backgroundTilemap.localBounds.max+new Vector3(-clampOffset,-clampOffset,0);
     }
 
     // Update is called once per frame

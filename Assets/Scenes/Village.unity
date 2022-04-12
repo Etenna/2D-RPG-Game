@@ -32845,6 +32845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundTilemap: {fileID: 833528318}
   playerToClamp: {fileID: 794025327}
+  clampOffset: 0.5
 --- !u!1001 &1208254783
 PrefabInstance:
   m_ObjectHideFlags: 0

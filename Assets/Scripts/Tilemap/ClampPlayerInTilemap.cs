@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class ClampPlayerInTilemap : MonoBehaviour
 {
     [SerializeField] Tilemap backgroundTilemap;
-    [SerializeField] GameObject playerToClamp;
+    [SerializeField] PlayerController playerToClamp;
     [SerializeField] float clampOffset = 0;
 
 
@@ -19,13 +20,18 @@ public class ClampPlayerInTilemap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bottomLeftEdge = backgroundTilemap.localBounds.min+new Vector3(clampOffset,clampOffset,0);
-        topRightEdge = backgroundTilemap.localBounds.max+new Vector3(-clampOffset,-clampOffset,0);
-    }
+        bottomLeftEdge = backgroundTilemap.localBounds.min + new Vector3(clampOffset, clampOffset, 0);
+        topRightEdge = backgroundTilemap.localBounds.max + new Vector3(-clampOffset, -clampOffset, 0);
 
+        
+    }
     // Update is called once per frame
     void Update()
     {
+        while (playerToClamp == null)
+        {
+            playerToClamp = FindObjectOfType<PlayerController>();
+        }
         HoldPlayerInMap();
     }
 

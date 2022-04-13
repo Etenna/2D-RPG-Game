@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
             virtualCamera.m_Lens.OrthographicSize = 5f;
     }
 
-    public void SetVCFollowToPlayer(PlayerController playerToFind)
+    private void SetVCFollowToPlayer(PlayerController playerToFind)
     {
         playerToFind = FindPlayerInNewScene(playerToFind);
 
@@ -32,19 +32,11 @@ public class CameraController : MonoBehaviour
         virtualCamera.Follow = playerToFind.transform;
     }
 
-    public PlayerController FindPlayerInNewScene(PlayerController playerToFind)
+    private void FindPlayerInNewScene(PlayerController playerToFind)
     {
         while (playerToFind == null)
         {
             playerToFind = FindObjectOfType<PlayerController>();
         }
-
-        return playerToFind;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

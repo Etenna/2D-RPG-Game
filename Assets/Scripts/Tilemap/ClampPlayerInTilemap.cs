@@ -28,11 +28,16 @@ public class ClampPlayerInTilemap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        FindPlayerInNewScene();
+        HoldPlayerInMap();
+    }
+
+    private void FindPlayerInNewScene()
+    {
         while (playerToClamp == null)
         {
             playerToClamp = FindObjectOfType<PlayerController>();
         }
-        HoldPlayerInMap();
     }
 
     private void HoldPlayerInMap()

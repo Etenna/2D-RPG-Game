@@ -42,9 +42,4 @@ public class CameraController : MonoBehaviour
         return playerToFind;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

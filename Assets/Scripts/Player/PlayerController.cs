@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 
 public class PlayerController : MonoBehaviour
@@ -14,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public string transitionName;
 
-    
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -32,7 +31,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -43,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-      
+
 
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
@@ -54,7 +53,7 @@ public class PlayerController : MonoBehaviour
         SetPlayerWalkAndIdleAnimation();
     }
 
-   
+
 
     private void SetPlayerWalkAndIdleAnimation()
     {
@@ -68,4 +67,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #region TestEvent Methoden welche auf das Event subscriben
+    /// <summary>
+    /// 2 Test Methoden, welche auf das TestEvent Subscriben.
+    /// </summary>
+    //void YouDied()
+    //{
+    //    Debug.Log("Method from PlayerController, Name: YouDied");
+    //}
+    //void YouNotDied()
+    //{
+    //    Debug.Log("You are not died..");
+    //}
+    //private void OnEnable()
+    //{
+    //    EventManager.onPressSpezificKey += YouDied;
+    //    EventManager.onPressSpezificKey += YouNotDied;
+    //}
+    //private void OnDisable()
+    //{
+    //    EventManager.onPressSpezificKey -= YouDied;
+    //    EventManager.onPressSpezificKey-= YouNotDied;
+    //}
+    #endregion
 }

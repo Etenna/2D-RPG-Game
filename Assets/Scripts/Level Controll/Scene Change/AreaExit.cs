@@ -31,6 +31,7 @@ public class AreaExit : MonoBehaviour
             // TODO: Ändern dass der Buildindex (int) geladen wird
             PlayerController.instance.transitionName = transitionAreaName;
             SceneManager.LoadScene(sceneToLoad);
+            EventManager.Instance.OnSceneChangedEvent();
         }
     }
 }

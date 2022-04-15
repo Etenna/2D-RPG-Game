@@ -17,29 +17,33 @@ public class CameraController : MonoBehaviour
     }
     void Start()
     {
-        SetVCFollowToPlayer(playerTarget);
+        SetVCFollowToPlayer();
         if (SceneManager.GetActiveScene().name == "Overworld")
             virtualCamera.m_Lens.OrthographicSize = 8f;
         else
             virtualCamera.m_Lens.OrthographicSize = 5f;
     }
 
-    public void SetVCFollowToPlayer(PlayerController playerToFind)
+    public void SetVCFollowToPlayer()
     {
-        playerToFind = FindPlayerInNewScene(playerToFind);
+        FindPlayerInNewScene();
 
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        virtualCamera.Follow = playerToFind.transform;
+        virtualCamera.Follow = playerTarget.transform;
     }
 
-    public PlayerController FindPlayerInNewScene(PlayerController playerToFind)
+    public void FindPlayerInNewScene()
     {
-        while (playerToFind == null)
+        while (playerTarget == null)
         {
-            playerToFind = FindObjectOfType<PlayerController>();
+            playerTarget = FindObjectOfType<PlayerController>();
         }
-
-        return playerToFind;
+    }
+    private void OnEnable()
+    {
+    }
+    private void OnDisable()
+    {
     }
 
 }

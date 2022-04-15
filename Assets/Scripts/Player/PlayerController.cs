@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovePlayer();
+       
     }
 
     private void MovePlayer()
@@ -66,7 +67,6 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetFloat("lastY", movementInput.y);
         }
     }
-
     #region TestEvent Methoden welche auf das Event subscriben
     /// <summary>
     /// 2 Test Methoden, welche auf das TestEvent Subscriben.

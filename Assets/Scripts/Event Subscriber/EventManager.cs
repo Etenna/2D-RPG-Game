@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,18 @@ public class EventManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
     }
+
+    public static event Action OnPlayerDied;
+    public void OnPlayerDiedEvent()
+    {
+        OnPlayerDied?.Invoke();
+    }
+    public static event Action OnSceneChanged;
+    public void OnSceneChangedEvent()
+    {
+        OnSceneChanged?.Invoke();
+    }
+
     #region TestEvent
     /// <summary>
     /// Wird gegen schluss wieder gelöscht. Dient zum nachschauen wie ein Event erstellt wird.

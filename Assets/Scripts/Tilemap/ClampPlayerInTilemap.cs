@@ -10,7 +10,6 @@ public class ClampPlayerInTilemap : MonoBehaviour
     [SerializeField] PlayerController playerToClamp;
     [SerializeField] float clampOffset = 0;
 
-
     Vector3 bottomLeftEdge;
     Vector3 topRightEdge;
     private void Awake()
@@ -21,9 +20,7 @@ public class ClampPlayerInTilemap : MonoBehaviour
     void Start()
     {
         bottomLeftEdge = backgroundTilemap.localBounds.min + new Vector3(clampOffset, clampOffset, 0);
-        topRightEdge = backgroundTilemap.localBounds.max + new Vector3(-clampOffset, -clampOffset, 0);
-
-        
+        topRightEdge = backgroundTilemap.localBounds.max + new Vector3(-clampOffset, -clampOffset, 0);       
     }
     // Update is called once per frame
     void Update()
@@ -47,5 +44,12 @@ public class ClampPlayerInTilemap : MonoBehaviour
             Mathf.Clamp(playerToClamp.transform.position.y, bottomLeftEdge.y, topRightEdge.y),
             Mathf.Clamp(playerToClamp.transform.position.z, bottomLeftEdge.z, topRightEdge.z)
             );
+    }
+
+    private void OnEnable()
+    {
+    }
+    private void OnDisable()
+    {
     }
 }

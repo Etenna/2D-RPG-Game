@@ -21,27 +21,45 @@ public class DialogController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
-            StartConservation();
+            StartConversation();
 
         }
-        if (dialogBox.activeSelf && Input.GetKeyDown(KeyCode.F))
-        {
-            ContinueConservation();
-        }
+        //if (dialogBox.activeSelf && Input.GetKeyDown(KeyCode.Joystick1Button0))
+        //{
+        //    //ContinueConversation();
+        //}
     }
 
-    private void StartConservation()
+    private void StartConversation()
     {
-        currentSentence = 0;
-        dialogBox.SetActive(true);
-        nameBox.SetActive(true);
-        dialogText.text = dialogSentences[currentSentence];
+        if (!dialogBox.activeSelf)
+        {
+            currentSentence = 0;
+            dialogBox.SetActive(true);
+            nameBox.SetActive(true);
+            dialogText.text = dialogSentences[currentSentence];
+        }
+        else
+        {
+            currentSentence++;
+            Debug.Log($"Aktuelles Element im Array: {currentSentence}/{dialogSentences.Length}");
+            Debug.Log($"CurrentSentence Element: {currentSentence}");
+            if (currentSentence >= dialogSentences.Length)
+            {
+                dialogBox.SetActive(false);
+                nameBox.SetActive(false);
+
+                return;
+            }
+            dialogText.text = dialogSentences[currentSentence];
+        }
+        
         Debug.Log($"Starte Gespräch. Aktuelles Element im Array: {currentSentence}/{dialogSentences.Length}");
     }
 
-    void ContinueConservation()
+    void ContinueConversation()
     {
         currentSentence++;
         Debug.Log($"Aktuelles Element im Array: {currentSentence}/{dialogSentences.Length}");
@@ -50,7 +68,7 @@ public class DialogController : MonoBehaviour
         {
             dialogBox.SetActive(false);
             nameBox.SetActive(false);
-            //currentSentence = 0;
+
             return;
         }
         dialogText.text = dialogSentences[currentSentence];

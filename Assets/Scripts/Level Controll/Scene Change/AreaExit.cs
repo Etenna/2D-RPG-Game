@@ -17,21 +17,20 @@ public class AreaExit : MonoBehaviour
         theAreaEnter.transitionAreaName = transitionAreaName;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            // Nur für Testzwecke!
-            // TODO: Ändern dass der Buildindex (int) geladen wird
-            PlayerController.instance.transitionName = transitionAreaName;
-            SceneManager.LoadScene(sceneToLoad);
-            EventManager.Instance.OnSceneChangedEvent();
+            StartCoroutine(SceneChange());
         }
+    }
+
+    IEnumerator SceneChange()
+    {
+        PlayerController.instance.transitionName = transitionAreaName;
+        EventManager.Instance.OnSceneFadeOutEvent();
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneToLoad);
+        EventManager.Instance.OnSceneFadeInEvent();
     }
 }

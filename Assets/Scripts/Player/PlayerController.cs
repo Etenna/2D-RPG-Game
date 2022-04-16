@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     public string transitionName;
 
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -37,14 +36,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
-       
+        MovePlayer();      
     }
 
     private void MovePlayer()
     {
-
-
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
 
@@ -53,8 +49,6 @@ public class PlayerController : MonoBehaviour
 
         SetPlayerWalkAndIdleAnimation();
     }
-
-
 
     private void SetPlayerWalkAndIdleAnimation()
     {

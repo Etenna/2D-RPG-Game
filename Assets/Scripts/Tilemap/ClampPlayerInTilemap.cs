@@ -20,7 +20,7 @@ public class ClampPlayerInTilemap : MonoBehaviour
     void Start()
     {
         bottomLeftEdge = backgroundTilemap.localBounds.min + new Vector3(clampOffset, clampOffset, 0);
-        topRightEdge = backgroundTilemap.localBounds.max + new Vector3(-clampOffset, -clampOffset, 0);       
+        topRightEdge = backgroundTilemap.localBounds.max + new Vector3(-clampOffset, -clampOffset, 0);
     }
     // Update is called once per frame
     void Update()

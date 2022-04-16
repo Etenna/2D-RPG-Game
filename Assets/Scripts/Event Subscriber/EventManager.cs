@@ -31,11 +31,28 @@ public class EventManager : MonoBehaviour
     {
         OnPlayerDied?.Invoke();
     }
+
     public static event Action OnSceneChanged;
     public void OnSceneChangedEvent()
     {
         OnSceneChanged?.Invoke();
     }
+
+    #region Fading Event
+    public static event Action OnSceneFadeIn;
+    public void OnSceneFadeInEvent()
+    {
+        Debug.Log("Start FadeIn Event");
+        OnSceneFadeIn?.Invoke();
+    }
+
+    public static event Action OnSceneFadeOut;
+    public void OnSceneFadeOutEvent()
+    {
+        Debug.Log("Start FadeOut Event");
+        OnSceneFadeOut?.Invoke();
+    }
+    #endregion
 
     #region TestEvent
     /// <summary>

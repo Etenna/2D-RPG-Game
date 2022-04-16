@@ -123,11 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &112720217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5733152761516601505, guid: 268004b5bad3a7c4283711f13fc97fd0, type: 3}
+  m_PrefabInstance: {fileID: 5733152761622088184}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &112720221 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5733152761516601509, guid: 268004b5bad3a7c4283711f13fc97fd0, type: 3}
   m_PrefabInstance: {fileID: 5733152761622088184}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &112720223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112720217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a94af71bacec8942b02727d4f1148e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogText: {fileID: 2013265324}
+  nameText: {fileID: 300168102}
+  dialogBox: {fileID: 565205505}
+  nameBox: {fileID: 449768923}
+  dialogSentences:
+  - Hallo Fremder!
+  - Willkommen im Dorf....
+  - "Ich bin Holzf\xE4ller Shibby. Was kann ich f\xFCr dich tun?"
+  currentSentence: 0
 --- !u!1 &212458741
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,18 +504,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449768923}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 300168101}
-  m_Father: {fileID: 112720221}
-  m_RootOrder: 2
+  m_Father: {fileID: 565205506}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 270, y: 325}
+  m_AnchoredPosition: {x: 235, y: 305}
   m_SizeDelta: {x: 452.4109, y: 73.851685}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &449768925
@@ -9438,6 +9464,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2013265323}
+  - {fileID: 449768924}
   m_Father: {fileID: 112720221}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

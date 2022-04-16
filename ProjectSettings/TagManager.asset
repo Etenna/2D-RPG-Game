@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NPC - Interactable
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -49,6 +51,9 @@ TagManager:
     locked: 0
   - name: Background Decoration
     uniqueID: 2605247567
+    locked: 0
+  - name: NPC
+    uniqueID: 3807518997
     locked: 0
   - name: Player
     uniqueID: 3746083061

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -26,6 +27,20 @@ public class EventManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    public delegate void OnConversationStartDelegate(string[] sentences, int villagerID,string villagerName);
+    public static event OnConversationStartDelegate OnConversationStart;
+
+    public static void OnConversationStartEvent(string[] sentences, int villagerID, string villagerName)
+    {
+        HandlePlayerMovementInput(true);
+        OnConversationStart?.Invoke(sentences,villagerID,villagerName);
+    }
+    public static event Action OnConversationEnd;
+    public static void OnConversationEndEvent()
+    {
+        OnConversationEnd?.Invoke();
+        HandlePlayerMovementInput(false);
+    }
     public static event Action OnPlayerDied;
     public void OnPlayerDiedEvent()
     {
@@ -36,6 +51,12 @@ public class EventManager : MonoBehaviour
     public void OnSceneChangedEvent()
     {
         OnSceneChanged?.Invoke();
+    }
+
+    public static event Action<bool> HandlePlayerMovementInput;
+    public void HandlePlayerMovementInputEvent()
+    {
+        HandlePlayerMovementInput?.Invoke(true);
     }
 
     #region Fading Event

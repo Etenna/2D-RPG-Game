@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     Animator playerAnimator;
 
     public string transitionName;
-
+    bool disableInput = false;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -36,11 +36,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();      
+        MovePlayer();
     }
 
     private void MovePlayer()
     {
+        Debug.Log($"Movement Input Disabled: {disableInput}");
+
+        if (disableInput) return;
+
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
 
@@ -60,6 +64,19 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetFloat("lastX", movementInput.x);
             playerAnimator.SetFloat("lastY", movementInput.y);
         }
+    }
+    void DisableInput(bool IsInputDisabled)
+    {
+        disableInput = IsInputDisabled;
+    }
+
+    private void OnEnable()
+    {
+        EventManager.HandlePlayerMovementInput += DisableInput;
+    }
+    private void OnDisable()
+    {
+        EventManager.HandlePlayerMovementInput -= DisableInput;
     }
     #region TestEvent Methoden welche auf das Event subscriben
     /// <summary>

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour
 {
+    public static DialogController Instance;
+
     [SerializeField] TextMeshProUGUI dialogText, nameText;
     [SerializeField] GameObject dialogBox, nameBox;
 
@@ -14,38 +16,31 @@ public class DialogController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
+
         dialogBox.SetActive(false);
-        nameBox.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
-        {
-            StartConversation();
-
-        }
-        //if (dialogBox.activeSelf && Input.GetKeyDown(KeyCode.Joystick1Button0))
-        //{
-        //    //ContinueConversation();
-        //}
+       
     }
 
     private void StartConversation()
     {
-        if (!dialogBox.activeSelf)
+        if (!dialogBox.activeInHierarchy)
         {
             currentSentence = 0;
             dialogBox.SetActive(true);
             nameBox.SetActive(true);
-            dialogText.text = dialogSentences[currentSentence];
+           
+            //dialogText.text = dialogSentences[currentSentence];
         }
         else
         {
             currentSentence++;
-            Debug.Log($"Aktuelles Element im Array: {currentSentence}/{dialogSentences.Length}");
-            Debug.Log($"CurrentSentence Element: {currentSentence}");
+
             if (currentSentence >= dialogSentences.Length)
             {
                 dialogBox.SetActive(false);
@@ -53,24 +48,66 @@ public class DialogController : MonoBehaviour
 
                 return;
             }
+
             dialogText.text = dialogSentences[currentSentence];
         }
-        
-        Debug.Log($"Starte Gespräch. Aktuelles Element im Array: {currentSentence}/{dialogSentences.Length}");
     }
 
-    void ContinueConversation()
+    public void ActivateDialog(string[] newSentencesToUse,int id,string villagerName)
     {
-        currentSentence++;
-        Debug.Log($"Aktuelles Element im Array: {currentSentence}/{dialogSentences.Length}");
-        Debug.Log($"CurrentSentence Element: {currentSentence}");
-        if (currentSentence >= dialogSentences.Length)
-        {
-            dialogBox.SetActive(false);
-            nameBox.SetActive(false);
 
-            return;
+        if (!dialogBox.activeInHierarchy)
+        {
+            dialogBox.SetActive(true);
+
+            nameText.text = villagerName;
+
+            dialogSentences = newSentencesToUse;
+            currentSentence = 0;
+
+            dialogText.text = dialogSentences[currentSentence];
         }
-        dialogText.text = dialogSentences[currentSentence];
+        else
+        {
+            currentSentence++;
+
+            if (currentSentence >= dialogSentences.Length)
+            {
+                dialogBox.SetActive(false);
+
+                EventManager.OnConversationEndEvent();
+                return;
+            }
+
+            dialogText.text = dialogSentences[currentSentence];
+        }
+     
+    }
+    //IEnumerator TypeWritter(string dialog, TMP_Text textLabel)
+    //{
+    //    float t = 0;
+    //    int charIndex = 0;
+    //    while (charIndex < dialog.Length)
+    //    {
+    //        t+=Time.deltaTime;
+    //        charIndex=Mathf.FloorToInt(t);
+    //        charIndex=Mathf.Clamp(charIndex, 0, dialog.Length);
+
+    //        textLabel.text = dialog.Substring(0, charIndex);
+
+    //        yield return null;
+    //        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+    //    }
+
+    //    textLabel.text = dialog;
+    //}
+
+    private void OnEnable()
+    {
+        EventManager.OnConversationStart += ActivateDialog;
+    }
+    private void OnDisable()
+    {
+        EventManager.OnConversationStart -= ActivateDialog;
     }
 }

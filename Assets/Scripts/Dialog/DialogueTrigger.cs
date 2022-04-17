@@ -10,6 +10,8 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Ink JSON")]
     [SerializeField] TextAsset inkJSON=null;
 
+    [Header("Villager Information")]
+    [SerializeField] VillagerController villager;
     bool playerInRange;
 
     private void Awake()
@@ -26,7 +28,8 @@ public class DialogueTrigger : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 // Hier wird dann das Eventabgefeuert!
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                //DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                EventManager.OnConversationStartEvent(inkJSON,villager.GetVillagerName());
             }
         }
         else

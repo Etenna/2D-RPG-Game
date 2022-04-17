@@ -23,7 +23,7 @@ public class DialogHandler : MonoBehaviour
     {
         if (canActivateBox && Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            EventManager.OnConversationStartEvent(sentences,villagerID,villagerName);
+            //EventManager.OnConversationStartEvent(sentences,villagerID,villagerName);
         }
     }
 

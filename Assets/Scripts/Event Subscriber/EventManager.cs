@@ -27,13 +27,13 @@ public class EventManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public delegate void OnConversationStartDelegate(string[] sentences, int villagerID,string villagerName);
+    public delegate void OnConversationStartDelegate(TextAsset inkJSON,string villagerName);
     public static event OnConversationStartDelegate OnConversationStart;
 
-    public static void OnConversationStartEvent(string[] sentences, int villagerID, string villagerName)
+    public static void OnConversationStartEvent(TextAsset inkJSON, string villagerName)
     {
         HandlePlayerMovementInput(true);
-        OnConversationStart?.Invoke(sentences,villagerID,villagerName);
+        OnConversationStart?.Invoke(inkJSON,villagerName);
     }
     public static event Action OnConversationEnd;
     public static void OnConversationEndEvent()

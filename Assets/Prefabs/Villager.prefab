@@ -99,6 +99,8 @@ GameObject:
   - component: {fileID: 8664326613142493208}
   - component: {fileID: 8664326613142493205}
   - component: {fileID: 4136729189780770991}
+  - component: {fileID: 694676765808627324}
+  - component: {fileID: 1483721551236606129}
   m_Layer: 0
   m_Name: Villager
   m_TagString: NPC - Interactable
@@ -275,3 +277,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2884274, y: 0.9426371}
   m_EdgeRadius: 0
+--- !u!114 &694676765808627324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664326613142493215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6967736ae7d9db9408c30226cf6a3e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  villagerID: 0
+  villagerName: PlaceHolder
+  hasQuests: 0
+--- !u!114 &1483721551236606129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664326613142493215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac18523d90cc674ead0f698d5ac90fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualCue: {fileID: 1139611809}
+  inkJSON: {fileID: 4900000, guid: 4b8f616fb8bee0843a0e63c98ba60f4e, type: 3}
+  villager: {fileID: 694676765808627324}

@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Dialogue UI")]
     [SerializeField] GameObject dialoguePanel;
     [SerializeField] TextMeshProUGUI dialogueText;
+    [SerializeField] TextMeshProUGUI villagerNameText;
 
     [Header("Choices UI")]
     [SerializeField] GameObject choicesPanel;
@@ -56,16 +57,18 @@ public class DialogueManager : MonoBehaviour
             ContinueStory();
         }
     }
-    public void EnterDialogueMode(TextAsset inkJSON)
+    public void EnterDialogueMode(TextAsset inkJSON,string villagerName)
     {
         currentStory=new Story(inkJSON.text);
         dialogueIsPlaying = true;
+        villagerNameText.text = villagerName;
         dialoguePanel.SetActive(true);
         ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode()
     {
+        EventManager.OnConversationEndEvent();
         yield return new WaitForSeconds(0.2f);
 
         dialogueIsPlaying = false;
@@ -94,6 +97,7 @@ public class DialogueManager : MonoBehaviour
         if (currentChoices.Count <= 0)
         {
             choicesPanel.SetActive(false);
+            return;
         }
         else
         {
@@ -131,5 +135,14 @@ public class DialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
+    }
+
+    private void OnEnable()
+    {
+        EventManager.OnConversationStart += EnterDialogueMode;
+    }
+    private void OnDisable()
+    {
+        EventManager.OnConversationStart -= EnterDialogueMode;
     }
 }

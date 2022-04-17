@@ -104,10 +104,8 @@ public class DialogController : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnConversationStart += ActivateDialog;
     }
     private void OnDisable()
     {
-        EventManager.OnConversationStart -= ActivateDialog;
     }
 }

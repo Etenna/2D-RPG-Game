@@ -41,11 +41,14 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (DialogueManager.GetInstance().dialogueIsPlaying) return;
-
         Debug.Log($"Movement Input Disabled: {disableInput}");
 
-        if (disableInput) return;
+        if (disableInput)
+        {
+            SetPlayerInIdleMotion();
+            return;
+        }
+
 
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
@@ -54,6 +57,13 @@ public class PlayerController : MonoBehaviour
         playerRb.velocity = movementInput * playerMovementSpeed;
 
         SetPlayerWalkAndIdleAnimation();
+    }
+
+    private void SetPlayerInIdleMotion()
+    {
+        playerAnimator.SetFloat("movementX", playerRb.velocity.x);
+        playerAnimator.SetFloat("movementY", playerRb.velocity.y);
+        playerRb.velocity = Vector2.zero;
     }
 
     private void SetPlayerWalkAndIdleAnimation()

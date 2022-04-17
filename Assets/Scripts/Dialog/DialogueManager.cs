@@ -25,11 +25,16 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
-            Debug.LogWarning("Mehr als eine Instanz vom DialogManager gefunden!");
+            Destroy(this.gameObject);
         }
-        instance=this;
+        else
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(this);
     }
 
     public static DialogueManager GetInstance()

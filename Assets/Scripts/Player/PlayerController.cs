@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (DialogueManager.GetInstance().dialogueIsPlaying) return;
+
         Debug.Log($"Movement Input Disabled: {disableInput}");
 
         if (disableInput) return;

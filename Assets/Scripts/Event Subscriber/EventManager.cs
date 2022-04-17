@@ -41,6 +41,11 @@ public class EventManager : MonoBehaviour
         OnConversationEnd?.Invoke();
         HandlePlayerMovementInput(false);
     }
+    public static event Action<bool> HandlePlayerMovementInput;
+    public void HandlePlayerMovementInputEvent()
+    {
+        HandlePlayerMovementInput?.Invoke(true);
+    }
     public static event Action OnPlayerDied;
     public void OnPlayerDiedEvent()
     {
@@ -53,11 +58,7 @@ public class EventManager : MonoBehaviour
         OnSceneChanged?.Invoke();
     }
 
-    public static event Action<bool> HandlePlayerMovementInput;
-    public void HandlePlayerMovementInputEvent()
-    {
-        HandlePlayerMovementInput?.Invoke(true);
-    }
+    
 
     #region Fading Event
     public static event Action OnSceneFadeIn;

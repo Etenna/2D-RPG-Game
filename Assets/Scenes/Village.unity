@@ -962,6 +962,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0c6a04cebbae0b47a92d2cc0daca31f, type: 3}
+--- !u!1 &485738998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7653423314862810555, guid: f0c6a04cebbae0b47a92d2cc0daca31f, type: 3}
+  m_PrefabInstance: {fileID: 485738997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &531217557
 GameObject:
   m_ObjectHideFlags: 0
@@ -10780,12 +10785,35 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7653423314862810549, guid: f0c6a04cebbae0b47a92d2cc0daca31f, type: 3}
   m_PrefabInstance: {fileID: 485738997}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 485738998}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66b388b3ef61a664a837642e073d4835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &794025330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485738998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19504623065ade0448e4faf4d3d19894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: Kefinus
+  playerLevel: 1
+  currentXP: 5
+  maxHealth: 100
+  currentHealth: 100
+  maxMana: 20
+  currentMana: 20
+  strength: 15
+  dexterity: 10
+  wisdom: 0
+  defence: 5
 --- !u!1 &811396740
 GameObject:
   m_ObjectHideFlags: 0

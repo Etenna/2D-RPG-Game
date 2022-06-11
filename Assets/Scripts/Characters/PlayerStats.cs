@@ -88,6 +88,7 @@ public class PlayerStats : MonoBehaviour
     }
     void AddStats()
     {
+        // TODO: Add different stats and calculating Methods
         maxHealth += 20;
     }
 }

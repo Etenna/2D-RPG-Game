@@ -58,7 +58,12 @@ public class EventManager : MonoBehaviour
         OnSceneChanged?.Invoke();
     }
 
-    
+    public static event Action OnLevelUP;
+    public static void OnLevelUpEvent()
+    {
+        OnLevelUP?.Invoke();
+        Debug.Log("OnLevelUp fired");
+    }
 
     #region Fading Event
     public static event Action OnSceneFadeIn;

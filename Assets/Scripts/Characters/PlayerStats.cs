@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats Instance { get; private set; }
+
     [Header("Character Info")]
     [SerializeField] string playerName;
     [Header("Level Info")]
@@ -52,6 +54,40 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            AddXP(20);
+        }
+    }
+
+    public void AddXP(int amountOfXP)
+    {
+        currentXP+=amountOfXP;
+        if(currentXP > xpForEachLevel[playerLevel])
+        {
+            currentXP-=xpForEachLevel[playerLevel];
+            OnLevelUp();
+
+        }
+    }
+
+    public int GetPlayerLevel()
+    {
+        return playerLevel;
+    }
+    public void SetMaxHealth(int amountToAdd)
+    {
+        maxHealth+=amountToAdd;
+    }
+
+    void OnLevelUp()
+    {
+        playerLevel++;
+        Debug.Log("Congratulation, you are earned enough XP to reach Level: "+playerLevel);
+        AddStats();
+    }
+    void AddStats()
+    {
+        maxHealth += 20;
     }
 }

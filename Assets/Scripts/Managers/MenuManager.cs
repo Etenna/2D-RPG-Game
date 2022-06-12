@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour
     bool menuActive = false;
 
     PlayerStats[] playerStats;
-    [SerializeField] TextMeshProUGUI[] charNameText, charHPText, charMPText, charLevelText, charXPText;
+    [SerializeField] TextMeshProUGUI[] charNameText, charHPText, charMPText, charCurrentXP, charXPText, charXPValuePrecentage;
     [SerializeField] Slider[] XPSlider;
     [SerializeField] Image[] charImage;
     [SerializeField] GameObject[] charPanel;
@@ -29,6 +29,8 @@ public class MenuManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
         menu.gameObject.SetActive(false);
+
+
     }
 
     // Update is called once per frame
@@ -48,10 +50,26 @@ public class MenuManager : MonoBehaviour
         {
             item.SetActive(false);
         }
+        foreach (var item in XPSlider)
+        {
+            item.minValue = 0;
+            item.maxValue = 100;
+        }
 
         for (int i = 0; i < playerStats.Length; i++)
         {
             charPanel[i].SetActive(true);
+
+            charNameText[i].text = playerStats[i].GetPlayerName();
+            charHPText[i].text = $"HP: {playerStats[i].GetCurrentHealth()}/{playerStats[i].GetMaxHealth()}";
+            charMPText[i].text = $"MP: {playerStats[i].GetCurrentMana()}/{playerStats[i].GetMaxMana()}";
+            charCurrentXP[i].text = $"Current XP: {playerStats[i].GetCurrentXP()}";
+            charXPText[i].text = $"{playerStats[i].GetCurrentXP()}/{playerStats[i].GetXPForNextLevel()}";
+
+            charXPValuePrecentage[i].text = $"{Mathf.FloorToInt(playerStats[i].GetCurrentXP() / playerStats[i].GetXPForNextLevel()*100)}%";
+            XPSlider[i].value = playerStats[i].GetCurrentXP() / playerStats[i].GetXPForNextLevel()*100;
+
+            charImage[i].sprite = playerStats[i].GetPlayerSprite();
         }
     }
 

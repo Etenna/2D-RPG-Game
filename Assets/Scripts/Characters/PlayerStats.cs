@@ -11,11 +11,11 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] Sprite playerSprite;
     [SerializeField] string playerName;
     [Header("Level Info")]
-    [SerializeField] int playerLevel=1;
-    [SerializeField] int currentXP;
-    [SerializeField] int maxLevel=10;
+    [SerializeField] int playerLevel = 1;
+    [SerializeField] float currentXP;
+    [SerializeField] int maxLevel = 10;
     [SerializeField] int baseLevelXP = 100; // XP need for reach the second Level
-    [SerializeField] int[] xpForEachLevel;
+    [SerializeField] float[] xpForEachLevel;
 
     [Header("Health and Mana Info")]
     [SerializeField] int maxHealth = 100;
@@ -40,7 +40,7 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        xpForEachLevel = new int[maxLevel];
+        xpForEachLevel = new float[maxLevel];
         xpForEachLevel[1] = baseLevelXP;
         CalculateXPForEachLevel();
     }
@@ -64,10 +64,10 @@ public class PlayerStats : MonoBehaviour
 
     public void AddXP(int amountOfXP)
     {
-        currentXP+=amountOfXP;
-        if(currentXP > xpForEachLevel[playerLevel])
+        currentXP += amountOfXP;
+        if (currentXP > xpForEachLevel[playerLevel])
         {
-            currentXP-=xpForEachLevel[playerLevel];
+            currentXP -= xpForEachLevel[playerLevel];
             OnLevelUp();
 
         }
@@ -79,18 +79,54 @@ public class PlayerStats : MonoBehaviour
     }
     public void SetMaxHealth(int amountToAdd)
     {
-        maxHealth+=amountToAdd;
+        maxHealth += amountToAdd;
     }
 
     void OnLevelUp()
     {
         playerLevel++;
-        Debug.Log("Congratulation, you are earned enough XP to reach Level: "+playerLevel);
+        Debug.Log("Congratulation, you are earned enough XP to reach Level: " + playerLevel);
         AddStats();
     }
     void AddStats()
     {
         // TODO: Add different stats and calculating Methods
         maxHealth += 20;
+    }
+
+    public string GetPlayerName()
+    {
+        return playerName;
+    }
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetMaxMana()
+    {
+        return maxMana;
+    }
+    public int GetCurrentMana()
+    {
+        return currentMana;
+    }
+    public float GetCurrentXP()
+    {
+        return currentXP;
+    }
+
+    public float GetXPForNextLevel()
+    {
+        return xpForEachLevel[playerLevel];
+    }
+
+    public Sprite GetPlayerSprite()
+    {
+        return playerSprite;
     }
 }

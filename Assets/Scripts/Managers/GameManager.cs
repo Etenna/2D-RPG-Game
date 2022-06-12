@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] PlayerStats[] playerStats;
 
+
     public bool gameMenuOpened, dialogBoxOpened;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,8 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
 
-        playerStats=FindObjectsOfType<PlayerStats>();
+
+        FindPlayerStats();
     }
 
     // Update is called once per frame
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerController.instance.DisableInput(false);
         }
+        Debug.Log(playerStats.Length);
     }
     public void FindPlayerStats()
     {

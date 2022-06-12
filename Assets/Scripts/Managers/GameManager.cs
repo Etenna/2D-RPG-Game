@@ -36,4 +36,13 @@ public class GameManager : MonoBehaviour
             PlayerController.instance.DisableInput(false);
         }
     }
+    public void FindPlayerStats()
+    {
+        playerStats=FindObjectsOfType<PlayerStats>();
+    }
+
+    public PlayerStats[] GetPlayerStats()
+    {
+        return playerStats;
+    }
 }

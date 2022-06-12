@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -8,6 +10,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject menu;
 
     bool menuActive = false;
+
+    PlayerStats[] playerStats;
+    [SerializeField] TextMeshProUGUI[] charNameText, charHPText, charMPText, charLevelText, charXPText;
+    [SerializeField] Slider[] XPSlider;
+    [SerializeField] Image[] charImage;
+    [SerializeField] GameObject[] charPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +40,20 @@ public class MenuManager : MonoBehaviour
             ShowMenu();
         }
     }
+    public void UpdateStats()
+    {
+        playerStats = GameManager.instance.GetPlayerStats();
+
+        foreach (var item in charPanel)
+        {
+            item.SetActive(false);
+        }
+
+        for (int i = 0; i < playerStats.Length; i++)
+        {
+            charPanel[i].SetActive(true);
+        }
+    }
 
     private void ShowMenu()
     {
@@ -43,6 +65,8 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
+            GameManager.instance.FindPlayerStats();
+            UpdateStats();
             EventManager.OnMenuShowEvent();
             menu.gameObject.SetActive(true);
             GameManager.instance.gameMenuOpened = true;

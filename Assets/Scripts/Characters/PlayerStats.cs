@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance { get; private set; }
 
     [Header("Character Info")]
+    [SerializeField] Sprite playerSprite;
     [SerializeField] string playerName;
     [Header("Level Info")]
     [SerializeField] int playerLevel=1;

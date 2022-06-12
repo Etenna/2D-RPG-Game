@@ -183,14 +183,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19504623065ade0448e4faf4d3d19894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSprite: {fileID: 808911552, guid: 936874780c7268a43af72017772c50bc, type: 3}
   playerName: Kefinus
   playerLevel: 1
   currentXP: 5
+  maxLevel: 20
+  baseLevelXP: 100
+  xpForEachLevel: 
   maxHealth: 100
   currentHealth: 100
   maxMana: 20
   currentMana: 20
   strength: 15
+  vitality: 0
   dexterity: 10
+  speed: 0
   wisdom: 0
   defence: 5
+  luck: 0
+  xpCalc1: 5.12
+  xpCalc2: 4.06
+  xpCalc3: 110.6

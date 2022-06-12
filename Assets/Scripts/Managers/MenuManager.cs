@@ -26,6 +26,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.dialogBoxOpened) return;
         if (Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
             ShowMenu();
@@ -38,11 +39,13 @@ public class MenuManager : MonoBehaviour
         {
             EventManager.OnMenuCloseEvent();
             menu.gameObject.SetActive(false);
+            GameManager.instance.gameMenuOpened = false;
         }
         else
         {
             EventManager.OnMenuShowEvent();
             menu.gameObject.SetActive(true);
+            GameManager.instance.gameMenuOpened = true;
         }
     }
 }

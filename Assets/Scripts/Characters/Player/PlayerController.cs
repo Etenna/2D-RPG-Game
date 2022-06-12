@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetFloat("lastY", movementInput.y);
         }
     }
-    void DisableInput(bool IsInputDisabled)
+    public void DisableInput(bool IsInputDisabled)
     {
         disableInput = IsInputDisabled;
     }

@@ -64,6 +64,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void EnterDialogueMode(TextAsset inkJSON,string villagerName)
     {
+        GameManager.instance.dialogBoxOpened = true;
         currentStory=new Story(inkJSON.text);
         dialogueIsPlaying = true;
         villagerNameText.text = villagerName;
@@ -79,6 +80,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+        GameManager.instance.dialogBoxOpened = false;
     }
 
     void ContinueStory()

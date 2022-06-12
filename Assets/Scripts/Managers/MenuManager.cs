@@ -36,10 +36,12 @@ public class MenuManager : MonoBehaviour
     {
         if (menu.activeInHierarchy)
         {
+            EventManager.OnMenuCloseEvent();
             menu.gameObject.SetActive(false);
         }
         else
         {
+            EventManager.OnMenuShowEvent();
             menu.gameObject.SetActive(true);
         }
     }

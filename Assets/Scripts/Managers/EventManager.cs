@@ -65,21 +65,39 @@ public class EventManager : MonoBehaviour
         Debug.Log("OnLevelUp fired");
     }
 
+    public static event Action OnMenuShow;
+    public static void OnMenuShowEvent()
+    {
+        HandlePlayerMovementInput(true);
+        OnMenuShow?.Invoke();
+    }
+    public static event Action OnMenuClose;
+    public static void OnMenuCloseEvent()
+    {
+        OnMenuClose?.Invoke();
+        HandlePlayerMovementInput(false);
+    }
+
+
+
+
     #region Fading Event
     public static event Action OnSceneFadeIn;
-    public void OnSceneFadeInEvent()
+    public static void OnSceneFadeInEvent()
     {
         Debug.Log("Start FadeIn Event");
         OnSceneFadeIn?.Invoke();
     }
 
     public static event Action OnSceneFadeOut;
-    public void OnSceneFadeOutEvent()
+    public static void OnSceneFadeOutEvent()
     {
         Debug.Log("Start FadeOut Event");
         OnSceneFadeOut?.Invoke();
     }
     #endregion
+
+
 
     #region TestEvent
     /// <summary>

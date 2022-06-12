@@ -24,7 +24,7 @@ public class Fading : MonoBehaviour
     {
         fadeAnimator = GetComponentInChildren<Animator>();
     }
-
+   
     private void PlayFadeIn()
     {
         fadeAnimator.Play("Base Layer.FadeIn");
@@ -37,12 +37,20 @@ public class Fading : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("Begin Subscribe 0/2");
         EventManager.OnSceneFadeIn += PlayFadeIn;
+        Debug.Log("Begin Subscribe 1/2");
         EventManager.OnSceneFadeOut += PlayFadeOut;
+        Debug.Log("Begin Subscribe 2/2");
     }
     private void OnDisable()
     {
+        Debug.Log("Begin Unsubscribe 0/2");
         EventManager.OnSceneFadeOut -= PlayFadeOut;
+        Debug.Log("Begin Unsubscribe 1/2");
+
         EventManager.OnSceneFadeIn -= PlayFadeIn;
+        Debug.Log("Begin Unsubscribe 2/2");
+
     }
 }

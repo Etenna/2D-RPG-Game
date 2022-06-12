@@ -28,9 +28,9 @@ public class AreaExit : MonoBehaviour
     IEnumerator SceneChange()
     {
         PlayerController.instance.transitionName = transitionAreaName;
-        EventManager.Instance.OnSceneFadeOutEvent();
+        EventManager.OnSceneFadeOutEvent();
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneToLoad);
-        EventManager.Instance.OnSceneFadeInEvent();
+        EventManager.OnSceneFadeInEvent();
     }
 }

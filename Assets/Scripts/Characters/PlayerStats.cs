@@ -73,10 +73,6 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public int GetPlayerLevel()
-    {
-        return playerLevel;
-    }
     public void SetMaxHealth(int amountToAdd)
     {
         maxHealth += amountToAdd;
@@ -93,40 +89,19 @@ public class PlayerStats : MonoBehaviour
         // TODO: Add different stats and calculating Methods
         maxHealth += 20;
     }
-
-    public string GetPlayerName()
-    {
-        return playerName;
-    }
-    public int GetMaxHealth()
-    {
-        return maxHealth;
-    }
-    public int GetCurrentHealth()
-    {
-        return currentHealth;
-    }
-
-    public int GetMaxMana()
-    {
-        return maxMana;
-    }
-    public int GetCurrentMana()
-    {
-        return currentMana;
-    }
-    public float GetCurrentXP()
-    {
-        return currentXP;
-    }
-
-    public float GetXPForNextLevel()
-    {
-        return xpForEachLevel[playerLevel];
-    }
-
-    public Sprite GetPlayerSprite()
-    {
-        return playerSprite;
-    }
+    public int GetPlayerLevel() => playerLevel;
+    public string GetPlayerName() => playerName;
+    public int GetPlayerMaxHealth() => maxHealth;
+    public int GetPlayerCurrentHealth() => currentHealth;
+    public int GetPlayerMaxMana() => maxMana;
+    public int GetPlayerCurrentMana()=> currentMana;
+    public float GetPlayerCurrentXP() => currentXP;
+    public float GetPlayerXPForNextLevel() => xpForEachLevel[playerLevel];
+    public Sprite GetPlayerSprite() => playerSprite;
+    public int GetPlayerStrength() => strength;
+    public int GetPlayerVitality() => vitality;
+    public int GetPlayerDexterity() => dexterity;
+    public int GetPlayerDefence() => defence;
+    public int GetPlayerWisdom() => wisdom;
+    public int GetPlayerSpeed() => speed;
 }

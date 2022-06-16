@@ -23,7 +23,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject itemPanel, statPanel;
 
     [Header("Buttons")]
-    [SerializeField] GameObject statButton;
+    [SerializeField] GameObject overviewButton;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -84,7 +84,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    private void ShowMenu()
+    public void ShowMenu()
     {
         if (menu.activeInHierarchy)
         {
@@ -99,14 +99,15 @@ public class MenuManager : MonoBehaviour
             EventManager.OnMenuShowEvent();
             menu.gameObject.SetActive(true);
             GameManager.instance.gameMenuOpened = true;
-            StartCoroutine(SelectedFirstChoice());
+
+            StartCoroutine(SelectedFirstButton());
         }
     }
-    IEnumerator SelectedFirstChoice()
+    IEnumerator SelectedFirstButton()
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(statButton);
+        EventSystem.current.SetSelectedGameObject(overviewButton);
     }
     public void ShowItemPanel()
     {
@@ -124,7 +125,11 @@ public class MenuManager : MonoBehaviour
             statPanel.SetActive(true);
         }
     }
-
+    public void ShowOverview()
+    {
+        itemPanel.SetActive(false);
+        statPanel.SetActive(false);
+    }
    public void QuitGame()
     {
         Application.Quit();

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
@@ -11,13 +12,20 @@ public class MenuManager : MonoBehaviour
 
     bool menuActive = false;
 
+    [Header("Character Panel")]
     PlayerStats[] playerStats;
     [SerializeField] TextMeshProUGUI[] charNameText, charHPText, charMPText, charCurrentXP, charXPText, charXPValuePrecentage;
     [SerializeField] Slider[] XPSlider;
     [SerializeField] Image[] charImage;
     [SerializeField] GameObject[] charPanel;
+
+    [Header("Panels")]
+    [SerializeField] GameObject itemPanel, statPanel;
+
+    [Header("Buttons")]
+    [SerializeField] GameObject statButton;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         if (instance != null && instance != this)
         {
@@ -29,8 +37,11 @@ public class MenuManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
         menu.gameObject.SetActive(false);
-
-
+    }
+    void Start()
+    {
+        itemPanel.SetActive(false);
+        statPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -88,6 +99,35 @@ public class MenuManager : MonoBehaviour
             EventManager.OnMenuShowEvent();
             menu.gameObject.SetActive(true);
             GameManager.instance.gameMenuOpened = true;
+            StartCoroutine(SelectedFirstChoice());
         }
+    }
+    IEnumerator SelectedFirstChoice()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        yield return new WaitForEndOfFrame();
+        EventSystem.current.SetSelectedGameObject(statButton);
+    }
+    public void ShowItemPanel()
+    {
+        if (!itemPanel.activeInHierarchy)
+        {
+            statPanel.SetActive(false);
+            itemPanel.SetActive(true);
+        }
+    }
+    public void ShowStatPanel()
+    {
+        if (!statPanel.activeInHierarchy)
+        {
+            itemPanel.SetActive(false);
+            statPanel.SetActive(true);
+        }
+    }
+
+   public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Application is quitting right now!");
     }
 }

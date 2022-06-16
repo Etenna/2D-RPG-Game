@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
         {
             PlayerController.instance.DisableInput(false);
         }
-        Debug.Log(playerStats.Length);
     }
     public void FindPlayerStats()
     {

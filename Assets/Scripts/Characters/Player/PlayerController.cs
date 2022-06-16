@@ -41,8 +41,6 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        Debug.Log($"Movement Input Disabled: {disableInput}");
-
         if (disableInput)
         {
             SetPlayerInIdleMotion();

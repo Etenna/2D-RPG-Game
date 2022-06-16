@@ -24,6 +24,10 @@ public class MenuManager : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] GameObject overviewButton;
+
+    [Header("Stat Panel")]
+    [SerializeField] GameObject charInformationObject;
+    [SerializeField] GameObject[] stateCharPanels;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -36,12 +40,10 @@ public class MenuManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this);
-        menu.gameObject.SetActive(false);
     }
     void Start()
     {
-        itemPanel.SetActive(false);
-        statPanel.SetActive(false);
+        SetMenuPanelStatus(false,menu,itemPanel, statPanel,charInformationObject);
     }
 
     // Update is called once per frame
@@ -59,7 +61,7 @@ public class MenuManager : MonoBehaviour
 
         foreach (var item in charPanel)
         {
-            item.SetActive(false);
+            SetMenuPanelStatus(false, item);
         }
         foreach (var item in XPSlider)
         {
@@ -83,13 +85,23 @@ public class MenuManager : MonoBehaviour
             charImage[i].sprite = playerStats[i].GetPlayerSprite();
         }
     }
-
+    public void StatsMenu()
+    {
+        foreach (var item in stateCharPanels)
+        {
+            SetMenuPanelStatus(false, item);
+        }
+        for (int i = 0; i < playerStats.Length; i++)
+        {
+            SetMenuPanelStatus(true, stateCharPanels[i]);
+        }
+    }
     public void ShowMenu()
     {
         if (menu.activeInHierarchy)
         {
             EventManager.OnMenuCloseEvent();
-            menu.gameObject.SetActive(false);
+            SetMenuPanelStatus(false, menu,itemPanel, charInformationObject, statPanel);
             GameManager.instance.gameMenuOpened = false;
         }
         else
@@ -97,42 +109,56 @@ public class MenuManager : MonoBehaviour
             GameManager.instance.FindPlayerStats();
             UpdateStats();
             EventManager.OnMenuShowEvent();
-            menu.gameObject.SetActive(true);
+            SetMenuPanelStatus(true, menu);
             GameManager.instance.gameMenuOpened = true;
 
-            StartCoroutine(SelectedFirstButton());
+            StartCoroutine(SelectedFirstButton(overviewButton));
         }
     }
-    IEnumerator SelectedFirstButton()
+    IEnumerator SelectedFirstButton(GameObject buttonToSelect, params GameObject[] button)
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(overviewButton);
+        EventSystem.current.SetSelectedGameObject(buttonToSelect);
     }
     public void ShowItemPanel()
     {
         if (!itemPanel.activeInHierarchy)
         {
-            statPanel.SetActive(false);
-            itemPanel.SetActive(true);
+            SetMenuPanelStatus(false, statPanel);
+            SetMenuPanelStatus(true, itemPanel);
         }
     }
     public void ShowStatPanel()
     {
         if (!statPanel.activeInHierarchy)
         {
-            itemPanel.SetActive(false);
-            statPanel.SetActive(true);
+            SetMenuPanelStatus(false, itemPanel);
+            SetMenuPanelStatus(true, statPanel);
+            StatsMenu();
+            StartCoroutine(SelectedFirstButton(stateCharPanels[0]));
         }
     }
     public void ShowOverview()
     {
-        itemPanel.SetActive(false);
-        statPanel.SetActive(false);
+        SetMenuPanelStatus(false, itemPanel, statPanel, charInformationObject);
+    }
+
+    public void LoadCharInformation()
+    {
+        SetMenuPanelStatus(true, charInformationObject);
     }
    public void QuitGame()
     {
         Application.Quit();
         Debug.Log("Application is quitting right now!");
+    }
+
+    private void SetMenuPanelStatus(bool isActive, params GameObject[] menuPanel)
+    {
+        foreach (var item in menuPanel)
+        {
+            item.SetActive(isActive);
+        }
     }
 }

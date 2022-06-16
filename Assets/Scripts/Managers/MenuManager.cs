@@ -48,7 +48,7 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
         if (GameManager.instance.dialogBoxOpened) return;
-        if (Input.GetKeyDown(KeyCode.Joystick1Button7))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7)||Input.GetKeyDown(KeyCode.I))
         {
             ShowMenu();
         }

@@ -25,7 +25,7 @@ public class DialogueTrigger : MonoBehaviour
         if (playerInRange&&!DialogueManager.GetInstance().dialogueIsPlaying)
         {
             visualCue.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+            if (Input.GetKeyDown(KeyCode.Joystick1Button0)||Input.GetKeyDown(KeyCode.F))
             {
                 // Hier wird dann das Eventabgefeuert!
                 //DialogueManager.GetInstance().EnterDialogueMode(inkJSON);

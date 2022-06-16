@@ -57,7 +57,7 @@ public class DialogueManager : MonoBehaviour
     private void Update()
     {
         if (!dialogueIsPlaying) return;
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0)||Input.GetKeyDown(KeyCode.F))
         {
             ContinueStory();
         }

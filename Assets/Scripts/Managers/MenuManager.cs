@@ -31,6 +31,11 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI statCharName, statCharLevel, statCharHP, statCharMP, statCharStrength, statCharVitality, statCharDexterity, statCharWisdom, statCharSpeed, statCharDefense;
     [SerializeField] Image statCharImage;
+
+    [Header("Item Slot")]
+    [SerializeField] GameObject itemSlotContainer;
+    [SerializeField] Transform itemSlotContainerParent;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -184,6 +189,22 @@ public class MenuManager : MonoBehaviour
         foreach (var item in menuPanel)
         {
             item.SetActive(isActive);
+        }
+    }
+    public void UpdateItemsInventory()
+    {
+
+        foreach (Transform itemSlot in itemSlotContainerParent)
+        {
+            Destroy(itemSlot.gameObject);
+        }
+
+        foreach (ItemData item in Inventory.Instance.GetItemsList())
+        {
+            RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
+
+            Image itemImage = itemSlot.Find("Image").GetComponent<Image>();
+            itemImage.sprite = item.ItemImage;
         }
     }
 }

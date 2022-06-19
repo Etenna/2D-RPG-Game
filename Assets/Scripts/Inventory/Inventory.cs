@@ -10,13 +10,19 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+        DontDestroyOnLoad(this);
     }
     void Start()
     {
         itemsList = new List<ItemData>();
-
-        Debug.Log("New Inventory List has created!");
     }
 
     // Update is called once per frame
@@ -32,5 +38,10 @@ public class Inventory : MonoBehaviour
     public int ReturnCountOfItems()
     {
         return itemsList.Count;
+    }
+
+    public List<ItemData> GetItemsList()
+    {
+        return itemsList;
     }
 }

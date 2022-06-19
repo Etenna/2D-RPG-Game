@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(ItemData))]
-public class ItemDataEditor : Editor
+[System.Serializable]
+public  class ItemDataEditor : Editor
 {
+
     SerializedProperty _itemType;
     SerializedProperty _armorType;
     SerializedProperty _typeEffect;
@@ -17,6 +20,8 @@ public class ItemDataEditor : Editor
     SerializedProperty _armorDefence;
     SerializedProperty _weaponDamage;
     SerializedProperty _amountOfEffect;
+
+
 
     private void OnEnable()
     {
@@ -33,6 +38,7 @@ public class ItemDataEditor : Editor
         _amountOfEffect = serializedObject.FindProperty("amountOfEffect");
 
     }
+
     public override void OnInspectorGUI()
     {
         serializedObject.UpdateIfRequiredOrScript();
@@ -69,3 +75,4 @@ public class ItemDataEditor : Editor
      
     }
 }
+#endif

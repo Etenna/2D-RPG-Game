@@ -12,7 +12,7 @@ public class ItemsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        GetComponent<SpriteRenderer>().sprite = itemData.ItemImage;
     }
 
     // Update is called once per frame
@@ -20,4 +20,5 @@ public class ItemsManager : MonoBehaviour
     {
  
     }
+
 }

@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3821de635610c6040ac43037b5553a22, type: 3}
   m_Name: Wood_Sword
   m_EditorClassIdentifier: 
-  type: 0
-  itemID: 0
-  itemName: 
-  itemDescription: 
-  valueInCoins: 0
-  itemImage: {fileID: 0}
-  weaponDamage: 0
+  type: 1
+  itemID: 
+  itemName: Holzschwert
+  itemDescription: PLACEHOLDER
+  valueInCoins: 10
+  itemImage: {fileID: -210765425, guid: ffcd022ecbb174b49877cd67497fcf66, type: 3}
+  weaponDamage: 2
   armorDefence: 0
-  typeEffect: 0
-  amaountOfEffect: 0
+  amountOfEffect: 0

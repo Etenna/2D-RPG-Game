@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3821de635610c6040ac43037b5553a22, type: 3}
-  m_Name: New Item Data
+  m_Name: 001_Healpotion_small
   m_EditorClassIdentifier: 
   type: 0
-  itemID: 
-  itemName: 
-  itemDescription: 
+  armorType: 0
+  itemID: 0
+  itemName: default
+  itemDescription: default
   valueInCoins: 0
   itemImage: {fileID: 0}
   weaponDamage: 0

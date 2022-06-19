@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3821de635610c6040ac43037b5553a22, type: 3}
   m_Name: 001_Healpotion_small
   m_EditorClassIdentifier: 
-  type: 0
-  armorType: 0
-  itemID: 0
-  itemName: default
-  itemDescription: default
-  valueInCoins: 0
-  itemImage: {fileID: 0}
+  type: 4
+  armorType: 1
+  itemID: Potion001
+  itemName: Kleiner Heiltrank
+  itemDescription: Stellt Gesundheitspunkte wieder her
+  valueInCoins: 5
+  itemImage: {fileID: 728116900, guid: 06982fa990fa1bc4090fc09e249c5f17, type: 3}
   weaponDamage: 0
   armorDefence: 0
   typeEffect: 0
-  amountOfEffect: 0
+  amountOfEffect: 15

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3821de635610c6040ac43037b5553a22, type: 3}
   m_Name: 003Wood_Armor_Shield
   m_EditorClassIdentifier: 
-  type: 0
-  armorType: 0
-  itemID: 0
-  itemName: 
-  itemDescription: 
-  valueInCoins: 0
-  itemImage: {fileID: 0}
+  type: 2
+  armorType: 2
+  itemID: Armor003
+  itemName: Holzschild
+  itemDescription: Schildli
+  valueInCoins: 10
+  itemImage: {fileID: -1622790565, guid: ffcd022ecbb174b49877cd67497fcf66, type: 3}
   weaponDamage: 0
-  armorDefence: 0
+  armorDefence: 4
+  typeEffect: 0
   amountOfEffect: 0

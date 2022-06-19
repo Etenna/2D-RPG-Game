@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3821de635610c6040ac43037b5553a22, type: 3}
   m_Name: 010_Manapotion_small
   m_EditorClassIdentifier: 
-  type: 0
+  type: 4
   armorType: 0
-  itemID: 0
-  itemName: default
-  itemDescription: default
-  valueInCoins: 0
-  itemImage: {fileID: 0}
+  itemID: Potion010
+  itemName: Kleiner Manatrank
+  itemDescription: Stellt Manapunkte wieder her
+  valueInCoins: 5
+  itemImage: {fileID: -414630569, guid: 06982fa990fa1bc4090fc09e249c5f17, type: 3}
   weaponDamage: 0
   armorDefence: 0
-  typeEffect: 0
-  amountOfEffect: 0
+  typeEffect: 1
+  amountOfEffect: 5

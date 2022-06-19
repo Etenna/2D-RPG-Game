@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3821de635610c6040ac43037b5553a22, type: 3}
   m_Name: 002Wood_Armor_Head
   m_EditorClassIdentifier: 
-  type: 0
+  type: 2
   armorType: 0
-  itemID: 0
-  itemName: 
-  itemDescription: 
-  valueInCoins: 0
-  itemImage: {fileID: 0}
+  itemID: Armor002
+  itemName: Holzkappe
+  itemDescription: Ein Kopfschutz aus Holz
+  valueInCoins: 10
+  itemImage: {fileID: -1859587275, guid: c40fb4e6c555673479c0afc7d4fd727f, type: 3}
   weaponDamage: 0
-  armorDefence: 0
+  armorDefence: 2
+  typeEffect: 0
   amountOfEffect: 0

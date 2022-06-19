@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3821de635610c6040ac43037b5553a22, type: 3}
   m_Name: 001Wood_Armor_Chest
   m_EditorClassIdentifier: 
-  type: 0
-  armorType: 0
-  itemID: 0
-  itemName: 
-  itemDescription: 
-  valueInCoins: 0
-  itemImage: {fileID: 0}
+  type: 2
+  armorType: 1
+  itemID: Armor001
+  itemName: "Holzr\xFCstung"
+  itemDescription: Placeholder
+  valueInCoins: 10
+  itemImage: {fileID: -2133759398, guid: c40fb4e6c555673479c0afc7d4fd727f, type: 3}
   weaponDamage: 0
-  armorDefence: 0
+  armorDefence: 4
+  typeEffect: 0
   amountOfEffect: 0

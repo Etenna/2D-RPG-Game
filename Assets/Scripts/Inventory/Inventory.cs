@@ -6,7 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
 
-    List<ItemsManager> itemsList;
+    List<ItemData> itemsList;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
     }
     void Start()
     {
-        itemsList = new List<ItemsManager>();
+        itemsList = new List<ItemData>();
 
         Debug.Log("New Inventory List has created!");
     }
@@ -25,8 +25,12 @@ public class Inventory : MonoBehaviour
         
     }
 
-    public void AddItems(ItemsManager item)
+    public void AddItems(ItemData item)
     {
         itemsList.Add(item);
+    }
+    public int ReturnCountOfItems()
+    {
+        return itemsList.Count;
     }
 }

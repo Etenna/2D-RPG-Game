@@ -21,4 +21,20 @@ public class ItemsManager : MonoBehaviour
  
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log($"Player hits the trigger on Gameobject: {itemData.ItemName}");
+            Inventory.Instance.AddItems(itemData);
+            Debug.Log($"Item: {itemData} hinzugefügt.");
+            DestroyAfterPickUp();
+            Debug.Log(Inventory.Instance.ReturnCountOfItems());
+        }
+    }
+
+    private void DestroyAfterPickUp()
+    {
+        Destroy(gameObject);
+    }
 }

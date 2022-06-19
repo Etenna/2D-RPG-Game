@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3821de635610c6040ac43037b5553a22, type: 3}
-  m_Name: Wood_Sword
+  m_Name: 001_Wood_Sword
   m_EditorClassIdentifier: 
   type: 1
-  itemID: 
+  armorType: 0
+  itemID: Weapon001
   itemName: Holzschwert
-  itemDescription: PLACEHOLDER
+  itemDescription: Ein wuchtiges Schwert, gefertigt aus einem Bambusstamm
   valueInCoins: 10
   itemImage: {fileID: -210765425, guid: ffcd022ecbb174b49877cd67497fcf66, type: 3}
   weaponDamage: 2
   armorDefence: 0
+  typeEffect: 0
   amountOfEffect: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   armorType: 0
   itemID: Armor002
   itemName: Holzkappe
-  itemDescription: Ein Kopfschutz aus Holz
+  itemDescription: "Ein Kopfschutz aus Holz, es sollte vor Angriffe sch\xFCtzen."
   valueInCoins: 10
   itemImage: {fileID: -1859587275, guid: c40fb4e6c555673479c0afc7d4fd727f, type: 3}
   weaponDamage: 0

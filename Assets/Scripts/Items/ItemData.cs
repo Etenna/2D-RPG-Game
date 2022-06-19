@@ -14,6 +14,7 @@ public class ItemData : ScriptableObject
     [SerializeField] string itemID="0";
     
     [SerializeField] string itemName="default";
+    [TextArea]
     [SerializeField] string itemDescription="default";
     [SerializeField] int valueInCoins=0;
     [SerializeField] Sprite itemImage=null;

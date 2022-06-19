@@ -16,7 +16,7 @@ MonoBehaviour:
   armorType: 1
   itemID: Armor001
   itemName: "Holzr\xFCstung"
-  itemDescription: Placeholder
+  itemDescription: "Eine einfache R\xFCstung aus Holz."
   valueInCoins: 10
   itemImage: {fileID: -2133759398, guid: c40fb4e6c555673479c0afc7d4fd727f, type: 3}
   weaponDamage: 0

@@ -36,10 +36,10 @@ public class ItemDataEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.UpdateIfRequiredOrScript();
-        EditorGUILayout.PropertyField(_itemType,new GUIContent("Item Type"));
+        EditorGUILayout.PropertyField(_itemType, new GUIContent("Item Type"));
 
-        EditorGUILayout.PropertyField(_itemID,new GUIContent("Item ID"));
-        EditorGUILayout.PropertyField(_itemName,new GUIContent("Item Name"));
+        EditorGUILayout.PropertyField(_itemID, new GUIContent("Item ID"));
+        EditorGUILayout.PropertyField(_itemName, new GUIContent("Item Name"));
         EditorGUILayout.PropertyField(_itemDescription, new GUIContent("Item Description"));
         EditorGUILayout.PropertyField(_itemImage, new GUIContent("Item Image"));
         EditorGUILayout.PropertyField(_valueInCoins, new GUIContent("Value In Coins"));
@@ -50,7 +50,7 @@ public class ItemDataEditor : Editor
             EditorGUILayout.PropertyField(_weaponDamage, new GUIContent("Weapon Damage"));
             EditorGUI.indentLevel--;
         }
-        else if(_itemType.intValue == 2)
+        else if (_itemType.intValue == 2)
         {
             EditorGUI.indentLevel++;
             EditorGUILayout.PropertyField(_armorType, new GUIContent("Armor Type"));
@@ -66,37 +66,6 @@ public class ItemDataEditor : Editor
         }
 
         serializedObject.ApplyModifiedProperties();
-
-
-        var itemdata = target as ItemData;
-        //itemdata.type=(ItemData.ItemType)EditorGUILayout.EnumPopup("ItemType",itemdata.type);
-        //itemdata.ItemID = EditorGUILayout.TextField("ItemID", itemdata.ItemID);
-        //itemdata.ItemName=EditorGUILayout.TextField("ItemName",itemdata.ItemName);
-        //itemdata.ItemDescription=EditorGUILayout.TextField("ItemDescription",itemdata.ItemDescription);
-        //itemdata.ValueInCoins=EditorGUILayout.IntField("ValueInCoins",itemdata.ValueInCoins);
-        //EditorGUILayout.BeginHorizontal();
-        //EditorGUILayout.PrefixLabel("ItemImage");
-        //itemdata.ItemImage = (Sprite)EditorGUILayout.ObjectField(itemdata.ItemImage, typeof(Sprite),allowSceneObjects:true);
-        //EditorGUILayout.EndHorizontal();
-
-        //if (itemdata.type == ItemData.ItemType.Armor)
-        //{
-        //    itemdata.armorType = (ItemData.ArmorType)EditorGUILayout.EnumPopup("ArmorType", itemdata.armorType);
-        //    itemdata.ArmorDefence=EditorGUILayout.IntField("ArmorDefence",itemdata.ArmorDefence);
-        //}
-        //else if(itemdata.type == ItemData.ItemType.Weapon)
-        //{
-        //    itemdata.WeaponDamage=EditorGUILayout.IntField("WeaponDamage",itemdata.WeaponDamage);
-        //}
-        //else if (itemdata.type == ItemData.ItemType.Potion)
-        //{
-        //    itemdata.typeEffect = (ItemData.TypeEffect)EditorGUILayout.EnumPopup("TypeEffect", itemdata.typeEffect);
-        //    itemdata.AmountOfEffect = EditorGUILayout.IntField("AmountOfEffect", itemdata.AmountOfEffect);
-        //}
-
-        //if(GUILayout.Button("Save Asset"))
-        //{
-        //    EditorUtility.SetDirty(itemdata);
-        //}
+     
     }
 }

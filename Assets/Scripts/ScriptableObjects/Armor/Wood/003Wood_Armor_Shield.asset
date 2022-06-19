@@ -16,7 +16,7 @@ MonoBehaviour:
   armorType: 2
   itemID: Armor003
   itemName: Holzschild
-  itemDescription: Schildli
+  itemDescription: Ein Schild, welches aus Eiche angefertigt wurde.
   valueInCoins: 10
   itemImage: {fileID: -1622790565, guid: ffcd022ecbb174b49877cd67497fcf66, type: 3}
   weaponDamage: 0

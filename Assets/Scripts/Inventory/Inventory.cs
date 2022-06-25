@@ -33,7 +33,29 @@ public class Inventory : MonoBehaviour
 
     public void AddItems(ItemData item)
     {
-        itemsList.Add(item);
+        if (item.IsStackable)
+        {
+            bool itemAlreadyInInventory = false;
+
+            foreach (ItemData itemInInventory in itemsList)
+            {
+                if (itemInInventory.ItemName == item.ItemName)
+                {
+                    itemInInventory.StackAmount += 1;
+                    itemAlreadyInInventory = true;
+                }
+            }
+
+            if (!itemAlreadyInInventory)
+            {
+                itemsList.Add(item);
+            }
+        }
+        else
+        {
+            itemsList.Add(item);
+        }
+
     }
     public int ReturnCountOfItems()
     {

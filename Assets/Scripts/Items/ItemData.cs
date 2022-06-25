@@ -27,6 +27,7 @@ public class ItemData : ScriptableObject
     [SerializeField] int amountOfEffect = 0;
 
     [SerializeField] bool isStackable;
+    [SerializeField] int stackAmount;
     [SerializeField] int maxStackAmount;
 
 
@@ -41,4 +42,8 @@ public class ItemData : ScriptableObject
     public int ArmorDefence { get { return armorDefence; } set { armorDefence = value; } }
     public TypeEffect Effect { get { return typeEffect; } }
     public int AmountOfEffect { get { return amountOfEffect; } set { amountOfEffect = value; } }
+
+    public bool IsStackable { get { return isStackable; } set {isStackable = value; } }
+    public int StackAmount { get { return stackAmount; } set { stackAmount = value; } }
+    public int MaxStackAmount { get { return maxStackAmount; } }
 }

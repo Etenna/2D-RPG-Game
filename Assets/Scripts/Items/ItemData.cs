@@ -26,6 +26,9 @@ public class ItemData : ScriptableObject
     public TypeEffect typeEffect;
     [SerializeField] int amountOfEffect = 0;
 
+    [SerializeField] bool isStackable;
+    [SerializeField] int maxStackAmount;
+
 
 
     public ItemType Type { get { return type; } }

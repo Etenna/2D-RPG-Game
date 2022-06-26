@@ -30,7 +30,20 @@ public class ItemData : ScriptableObject
     [SerializeField] int stackAmount;
     [SerializeField] int maxStackAmount;
 
-
+    public void UseItem()
+    {
+        if (type == ItemData.ItemType.Potion)
+        {
+            if (typeEffect == ItemData.TypeEffect.HP)
+            {
+                PlayerStats.Instance.AddHP(AmountOfEffect);
+            }
+            else if (typeEffect == ItemData.TypeEffect.Mana)
+            {
+                PlayerStats.Instance.AddMana(AmountOfEffect);
+            }
+        }
+    }
 
     public ItemType Type { get { return type; } }
     public string ItemID { get { return itemID; } set { itemID = value; } }

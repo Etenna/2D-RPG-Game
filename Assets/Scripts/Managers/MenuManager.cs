@@ -220,6 +220,12 @@ public class MenuManager : MonoBehaviour
         Inventory.Instance.RemoveItem(activeItem);
         UpdateItemsInventory();
     }
+
+    public void UseItem()
+    {
+        activeItem.UseItem();
+        DiscardItem();
+    }
    public void QuitGame()
     {
         Application.Quit();

@@ -40,6 +40,8 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
+
         xpForEachLevel = new float[maxLevel];
         xpForEachLevel[1] = baseLevelXP;
         CalculateXPForEachLevel();
@@ -88,6 +90,19 @@ public class PlayerStats : MonoBehaviour
     {
         // TODO: Add different stats and calculating Methods
         maxHealth += 20;
+    }
+
+    public void AddMana(int amount)
+    {        
+        currentMana += amount;
+        if (currentMana > maxMana)
+            currentMana = maxMana;
+    }
+    public void AddHP(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
     }
     public int GetPlayerLevel() => playerLevel;
     public string GetPlayerName() => playerName;

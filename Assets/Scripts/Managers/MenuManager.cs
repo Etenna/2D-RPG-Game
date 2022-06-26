@@ -209,7 +209,14 @@ public class MenuManager : MonoBehaviour
             itemImage.sprite = item.ItemImage;
 
             TextMeshProUGUI itemText=itemSlot.Find("Amount").GetComponent<TextMeshProUGUI>();
-            itemText.text = $"{item.StackAmount}";
+            if (item.IsStackable)
+            {
+                itemText.text = $"{item.StackAmount}";
+            }
+            else
+            {
+                itemText.text = $"";
+            }
 
             itemSlot.GetComponent<InventoryItemDescription>().itemOnButton=item;
         }

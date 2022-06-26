@@ -37,6 +37,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Transform itemSlotContainerParent;
     public TextMeshProUGUI itemName, itemDescription;
 
+    public GameObject useButton;
+    public ItemData activeItem;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -128,7 +131,7 @@ public class MenuManager : MonoBehaviour
             StartCoroutine(SelectedFirstButton(overviewButton));
         }
     }
-    IEnumerator SelectedFirstButton(GameObject buttonToSelect, params GameObject[] button)
+    public IEnumerator SelectedFirstButton(GameObject buttonToSelect, params GameObject[] button)
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
@@ -180,19 +183,7 @@ public class MenuManager : MonoBehaviour
     {
         SetMenuPanelStatus(true, charInformationObject);
     }
-   public void QuitGame()
-    {
-        Application.Quit();
-        Debug.Log("Application is quitting right now!");
-    }
-
-    private void SetMenuPanelStatus(bool isActive, params GameObject[] menuPanel)
-    {
-        foreach (var item in menuPanel)
-        {
-            item.SetActive(isActive);
-        }
-    }
+   
     public void UpdateItemsInventory()
     {
 
@@ -209,6 +200,7 @@ public class MenuManager : MonoBehaviour
             itemImage.sprite = item.ItemImage;
 
             TextMeshProUGUI itemText=itemSlot.Find("Amount").GetComponent<TextMeshProUGUI>();
+
             if (item.IsStackable)
             {
                 itemText.text = $"{item.StackAmount}";
@@ -219,6 +211,24 @@ public class MenuManager : MonoBehaviour
             }
 
             itemSlot.GetComponent<InventoryItemDescription>().itemOnButton=item;
+        }
+    }
+
+    public void DiscardItem()
+    {
+        Debug.Log($"Discard {activeItem.ItemName}");
+    }
+   public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Application is quitting right now!");
+    }
+
+    private void SetMenuPanelStatus(bool isActive, params GameObject[] menuPanel)
+    {
+        foreach (var item in menuPanel)
+        {
+            item.SetActive(isActive);
         }
     }
 }

@@ -18,6 +18,11 @@ public class InventoryItemDescription : MonoBehaviour,ISelectHandler
         
     }
 
+    public void Press()
+    {
+        MenuManager.instance.activeItem = itemOnButton;
+    }
+
     public void OnSelect(BaseEventData eventData)
     {
         MenuManager.instance.itemName.text = itemOnButton.ItemName;

@@ -93,7 +93,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     public void AddMana(int amount)
-    {        
+    {
         currentMana += amount;
         if (currentMana > maxMana)
             currentMana = maxMana;

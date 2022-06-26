@@ -35,7 +35,8 @@ public class MenuManager : MonoBehaviour
     [Header("Item Slot")]
     [SerializeField] GameObject itemSlotContainer;
     [SerializeField] Transform itemSlotContainerParent;
-    [SerializeField] TextMeshProUGUI itemAmountText;
+    public TextMeshProUGUI itemName, itemDescription;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -206,8 +207,11 @@ public class MenuManager : MonoBehaviour
 
             Image itemImage = itemSlot.Find("Image").GetComponent<Image>();
             itemImage.sprite = item.ItemImage;
+
             TextMeshProUGUI itemText=itemSlot.Find("Amount").GetComponent<TextMeshProUGUI>();
             itemText.text = $"{item.StackAmount}";
+
+            itemSlot.GetComponent<InventoryItemDescription>().itemOnButton=item;
         }
     }
 }

@@ -34820,9 +34820,9 @@ MonoBehaviour:
   statCharImage: {fileID: 809018207}
   itemSlotContainer: {fileID: 43765477830183207, guid: 9d2caaeb91dd2014296a3ae6bcc9de15, type: 3}
   itemSlotContainerParent: {fileID: 1713566286}
-  useButton: {fileID: 1747499712}
   itemName: {fileID: 1756623010}
   itemDescription: {fileID: 438429361}
+  useButton: {fileID: 1747499712}
   activeItem: {fileID: 0}
 --- !u!4 &1981911876
 Transform:
@@ -35682,6 +35682,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7814236287217561174, guid: 268004b5bad3a7c4283711f13fc97fd0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814236287217561174, guid: 268004b5bad3a7c4283711f13fc97fd0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1981911875}
@@ -35690,11 +35694,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7814236287217561174, guid: 268004b5bad3a7c4283711f13fc97fd0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814236287217561174, guid: 268004b5bad3a7c4283711f13fc97fd0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DiscardItem
       objectReference: {fileID: 0}
     - target: {fileID: 7814236287217561174, guid: 268004b5bad3a7c4283711f13fc97fd0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814236287217561174, guid: 268004b5bad3a7c4283711f13fc97fd0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: MenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7814236287217561174, guid: 268004b5bad3a7c4283711f13fc97fd0, type: 3}

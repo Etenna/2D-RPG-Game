@@ -57,6 +57,34 @@ public class Inventory : MonoBehaviour
         }
 
     }
+
+    public void RemoveItem(ItemData item)
+    {
+        if (item.IsStackable && item.StackAmount > 0)
+        {
+            ItemData inventoryItem = null;
+
+            foreach (ItemData itemInInventory in itemsList)
+            {
+                if (itemInInventory.ItemName == item.ItemName)
+                {
+                    itemInInventory.StackAmount --;
+                    inventoryItem = itemInInventory;
+                }
+            }
+
+            if(inventoryItem!=null&&inventoryItem.StackAmount <= 0)
+            {
+                itemsList.Remove(inventoryItem);
+            }
+            //item.StackAmount -= 1;
+        }
+        else
+        {
+            itemsList.Remove(item);
+        }
+    }
+
     public int ReturnCountOfItems()
     {
         return itemsList.Count;

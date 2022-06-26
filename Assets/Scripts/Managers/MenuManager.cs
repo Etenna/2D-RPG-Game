@@ -216,7 +216,9 @@ public class MenuManager : MonoBehaviour
 
     public void DiscardItem()
     {
-        Debug.Log($"Discard {activeItem.ItemName}");
+        Debug.Log(activeItem.ItemName);
+        Inventory.Instance.RemoveItem(activeItem);
+        UpdateItemsInventory();
     }
    public void QuitGame()
     {

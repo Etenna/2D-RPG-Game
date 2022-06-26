@@ -25,12 +25,6 @@ public class Inventory : MonoBehaviour
         itemsList = new List<ItemData>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddItems(ItemData item)
     {
         if (item.IsStackable)
@@ -75,9 +69,9 @@ public class Inventory : MonoBehaviour
 
             if(inventoryItem!=null&&inventoryItem.StackAmount <= 0)
             {
+                inventoryItem.StackAmount = 1; // Wird benötigt damit beim erneuten Besitzen des Items die Anzahl wieder richtig ausgegeben wird.
                 itemsList.Remove(inventoryItem);
             }
-            //item.StackAmount -= 1;
         }
         else
         {
@@ -85,13 +79,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public int ReturnCountOfItems()
-    {
-        return itemsList.Count;
-    }
+    public int ReturnCountOfItems() => itemsList.Count;
+    public List<ItemData> GetItemsList() => itemsList;
 
-    public List<ItemData> GetItemsList()
-    {
-        return itemsList;
-    }
 }

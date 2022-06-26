@@ -4,21 +4,12 @@ using UnityEngine;
 
 public class ItemsManager : MonoBehaviour
 {
-
     [SerializeField] ItemData itemData;
-
-
 
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = itemData.ItemImage;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
- 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,8 +24,5 @@ public class ItemsManager : MonoBehaviour
         }
     }
 
-    private void DestroyAfterPickUp()
-    {
-        Destroy(gameObject);
-    }
+    private void DestroyAfterPickUp() => Destroy(gameObject);
 }

@@ -24,6 +24,8 @@ public class MenuManager : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] GameObject overviewButton;
+    [SerializeField] GameObject characterCoiceButton;
+    [SerializeField] GameObject itemsButton;
 
     [Header("Stat Panel")]
     [SerializeField] GameObject charInformationObject;
@@ -225,24 +227,32 @@ public class MenuManager : MonoBehaviour
         UpdateItemsInventory();
     }
 
-    public void UseItem()
+    public void UseItem(int selectedCharacter)
     {
-        activeItem.UseItem();
-        OpenCharacterChoicePanel();
-        DiscardItem(); 
+        activeItem.UseItem(selectedCharacter);
+        DiscardItem();
+        UpdateStats();
+        if(activeItem.StackAmount > 0)
+        {
+            StartCoroutine(SelectedFirstButton(itemsButton));
+        }
     }
 
     public void OpenCharacterChoicePanel()
     {
         characterChoicePanel.SetActive(true);
 
-        for (int i = 0; i < playerStats.Length; i++)
+        if (activeItem)
         {
-            PlayerStats activePlayer = GameManager.instance.GetPlayerStats()[i];
-            itemsCharacterChoiceNames[i].text=activePlayer.GetPlayerName();
+            StartCoroutine(SelectedFirstButton(characterCoiceButton));
+            for (int i = 0; i < playerStats.Length; i++)
+            {
+                PlayerStats activePlayer = GameManager.instance.GetPlayerStats()[i];
+                itemsCharacterChoiceNames[i].text=activePlayer.GetPlayerName();
 
-            bool activePlayerAvailable = activePlayer.gameObject.activeInHierarchy;
-            itemsCharacterChoiceNames[i].transform.parent.gameObject.SetActive(activePlayerAvailable);
+                bool activePlayerAvailable = activePlayer.gameObject.activeInHierarchy;
+                itemsCharacterChoiceNames[i].transform.parent.gameObject.SetActive(activePlayerAvailable);
+            }
         }
     }
     public void CloseCharacterChoicePanel()

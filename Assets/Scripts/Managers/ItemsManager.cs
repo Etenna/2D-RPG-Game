@@ -13,17 +13,19 @@ public class ItemsManager : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = itemData.ItemImage;
     }
 
-    public void UseItem(ItemData item)
+    public void UseItem(ItemData item, int characterToUseOn)
     {
+
+        PlayerStats selectedCharacter = GameManager.instance.GetPlayerStats()[characterToUseOn];
         if (item.type == ItemData.ItemType.Potion)
         {
             if (item.typeEffect == ItemData.TypeEffect.HP)
             {
-                PlayerStats.Instance.AddHP(item.AmountOfEffect);
+                selectedCharacter.AddHP(item.AmountOfEffect);
             }
             else if (item.typeEffect == ItemData.TypeEffect.Mana)
             {
-                PlayerStats.Instance.AddMana(item.AmountOfEffect);
+                selectedCharacter.AddMana(item.AmountOfEffect);
             }
         }
     }

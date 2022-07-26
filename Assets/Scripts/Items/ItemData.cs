@@ -30,17 +30,19 @@ public class ItemData : ScriptableObject
     [SerializeField] int stackAmount;
     [SerializeField] int maxStackAmount;
 
-    public void UseItem()
+    public void UseItem(int characterToUseOn)
     {
+        PlayerStats selectedCharacter = GameManager.instance.GetPlayerStats()[characterToUseOn];
+
         if (type == ItemData.ItemType.Potion)
         {
             if (typeEffect == ItemData.TypeEffect.HP)
             {
-                PlayerStats.Instance.AddHP(AmountOfEffect);
+                selectedCharacter.AddHP(AmountOfEffect);
             }
             else if (typeEffect == ItemData.TypeEffect.Mana)
             {
-                PlayerStats.Instance.AddMana(AmountOfEffect);
+                selectedCharacter.AddMana(AmountOfEffect);
             }
         }
     }

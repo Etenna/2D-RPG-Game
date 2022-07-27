@@ -37,6 +37,14 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float xpCalc2 = 4.06f;
     [SerializeField] float xpCalc3 = 110.6f;
 
+
+    [Header("Equipment Info")]
+    [SerializeField] string equippedWeaponName;
+    [SerializeField] string equippedArmorName;
+    [SerializeField] int weaponDamage;
+    [SerializeField] int armorDefence;
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,6 +112,17 @@ public class PlayerStats : MonoBehaviour
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
     }
+    public void EquipWeapon(int amount,string itemName)
+    {
+        weaponDamage+=amount;
+        equippedWeaponName = itemName;
+    }
+
+    public void EquipArmor(int amount, string itemName)
+    {
+        armorDefence+=amount;
+        equippedArmorName = itemName;
+    }
     public int GetPlayerLevel() => playerLevel;
     public string GetPlayerName() => playerName;
     public int GetPlayerMaxHealth() => maxHealth;
@@ -119,4 +138,8 @@ public class PlayerStats : MonoBehaviour
     public int GetPlayerDefence() => defence;
     public int GetPlayerWisdom() => wisdom;
     public int GetPlayerSpeed() => speed;
+    public string GetEquippedWeaponName() => equippedWeaponName;
+    public string GetEquippedArmorName() => equippedArmorName;
+    public int GetWeaponDamage()=> weaponDamage;
+    public int GetArmorDefence() => armorDefence;
 }

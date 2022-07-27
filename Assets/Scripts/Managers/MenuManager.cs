@@ -31,13 +31,16 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject charInformationObject;
     [SerializeField] GameObject[] stateCharButtons;
 
-    [SerializeField] TextMeshProUGUI statCharName, statCharLevel, statCharHP, statCharMP, statCharStrength, statCharVitality, statCharDexterity, statCharWisdom, statCharSpeed, statCharDefense;
+    [SerializeField] TextMeshProUGUI statCharName, statCharLevel, statCharHP, statCharMP, statCharStrength, statCharVitality, 
+        statCharDexterity, statCharWisdom, statCharSpeed, statCharDefense, statEquippedArmor, statEquippedWeapon,statCharWeaponPower,statCharArmorDefence;
     [SerializeField] Image statCharImage;
 
     [Header("Item Slot")]
     [SerializeField] GameObject itemSlotContainer;
     [SerializeField] Transform itemSlotContainerParent;
+    [SerializeField] TextMeshProUGUI itemEquipped;
     public TextMeshProUGUI itemName, itemDescription;
+
 
     [Header("Character Choice")]
     [SerializeField] GameObject characterChoicePanel;
@@ -64,16 +67,16 @@ public class MenuManager : MonoBehaviour
     {
         SetMenuPanelStatus(false,menu,itemPanel, statPanel,charInformationObject);
     }
-
     // Update is called once per frame
     void Update()
     {
         if (GameManager.instance.dialogBoxOpened) return;
-        if (Input.GetKeyDown(KeyCode.Joystick1Button7)||Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.I))
         {
             ShowMenu();
         }
     }
+
     public void UpdateStats()
     {
         playerStats = GameManager.instance.GetPlayerStats();
@@ -145,22 +148,29 @@ public class MenuManager : MonoBehaviour
     }
     public void UpdateStatePanel(int playerSelectedNumber)
     {
-        
-        statCharName.text = playerStats[playerSelectedNumber].GetPlayerName();
-        statCharLevel.text = playerStats[playerSelectedNumber].GetPlayerLevel().ToString();
+        PlayerStats playerSelected=playerStats[playerSelectedNumber];
 
-        statCharHP.text = $"{playerStats[playerSelectedNumber].GetPlayerCurrentHealth()}/{playerStats[playerSelectedNumber].GetPlayerMaxHealth()}";
-        statCharMP.text= $"{playerStats[playerSelectedNumber].GetPlayerCurrentMana()}/{playerStats[playerSelectedNumber].GetPlayerMaxMana()}";
+        statCharName.text = playerSelected.GetPlayerName();
+        statCharLevel.text = playerSelected.GetPlayerLevel().ToString();
 
-        statCharStrength.text= playerStats[playerSelectedNumber].GetPlayerStrength().ToString();
-        statCharVitality.text= playerStats[playerSelectedNumber].GetPlayerVitality().ToString();
-        statCharDexterity.text = playerStats[playerSelectedNumber].GetPlayerDexterity().ToString();
-        statCharWisdom.text= playerStats[playerSelectedNumber].GetPlayerWisdom().ToString();
+        statCharHP.text = $"{playerSelected.GetPlayerCurrentHealth()}/{playerSelected.GetPlayerMaxHealth()}";
+        statCharMP.text= $"{playerSelected.GetPlayerCurrentMana()}/{playerSelected.GetPlayerMaxMana()}";
 
-        statCharSpeed.text= playerStats[playerSelectedNumber].GetPlayerSpeed().ToString();
-        statCharDefense.text = playerStats[playerSelectedNumber].GetPlayerDefence().ToString();
+        statCharStrength.text= playerSelected.GetPlayerStrength().ToString();
+        statCharVitality.text= playerSelected.GetPlayerVitality().ToString();
+        statCharDexterity.text = playerSelected.GetPlayerDexterity().ToString();
+        statCharWisdom.text= playerSelected.GetPlayerWisdom().ToString();
 
-        statCharImage.sprite = playerStats[playerSelectedNumber].GetPlayerSprite();
+        statCharSpeed.text= playerSelected.GetPlayerSpeed().ToString();
+        statCharDefense.text = playerSelected.GetPlayerDefence().ToString();
+
+        statCharImage.sprite = playerSelected.GetPlayerSprite();
+
+        statEquippedWeapon.text=playerSelected.GetEquippedWeaponName();
+        statEquippedArmor.text=playerSelected.GetEquippedArmorName();
+
+        //statCharWeaponPower.text = playerSelected.GetWeaponDamage().ToString();
+        //statCharArmorDefence.text = playerSelected.GetArmorDefence().ToString();
     }
     public void ShowItemPanel()
     {
@@ -206,6 +216,7 @@ public class MenuManager : MonoBehaviour
             itemImage.sprite = item.ItemImage;
 
             TextMeshProUGUI itemText=itemSlot.Find("Amount").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI equippedText = itemSlot.Find("Equipped").GetComponent<TextMeshProUGUI>();
 
             if (item.IsStackable)
             {
@@ -216,7 +227,18 @@ public class MenuManager : MonoBehaviour
                 itemText.text = $"";
             }
 
+            // TODO Wenn Item Equipt wurde, aktiviere E Text.
+
             itemSlot.GetComponent<InventoryItemDescription>().itemOnButton=item;
+
+            if (item.IsEquipped)
+            {
+                equippedText.gameObject.SetActive(true);
+            }
+            else if (!item.IsEquipped)
+            {
+                equippedText.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -230,12 +252,34 @@ public class MenuManager : MonoBehaviour
     public void UseItem(int selectedCharacter)
     {
         activeItem.UseItem(selectedCharacter);
-        DiscardItem();
+        StartCoroutine(SelectedFirstButton(itemsButton));
         UpdateStats();
-        if(activeItem.StackAmount > 0)
+
+        switch (activeItem.Type)
         {
-            StartCoroutine(SelectedFirstButton(itemsButton));
+            case ItemData.ItemType.Armor:
+                Debug.Log("Armor selected");
+                break;
+            case ItemData.ItemType.Weapon:
+                Debug.Log("Weapon selected");
+                break;
+
         }
+
+        if (!activeItem.IsEquipped && activeItem.Type == ItemData.ItemType.Armor || !activeItem.IsEquipped && activeItem.Type == ItemData.ItemType.Weapon)
+        {
+            activeItem.IsEquipped = true;
+            UpdateItemsInventory();
+            return;
+        }
+        if (activeItem.IsEquipped && activeItem.Type == ItemData.ItemType.Armor || activeItem.IsEquipped && activeItem.Type == ItemData.ItemType.Weapon)
+        {
+            activeItem.IsEquipped = false;
+            UpdateItemsInventory();
+            return;
+        }
+        DiscardItem();
+    
     }
 
     public void OpenCharacterChoicePanel()

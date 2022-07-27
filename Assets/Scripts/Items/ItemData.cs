@@ -27,8 +27,11 @@ public class ItemData : ScriptableObject
     [SerializeField] int amountOfEffect = 0;
 
     [SerializeField] bool isStackable;
+    [SerializeField] bool isEquipped;
     [SerializeField] int stackAmount;
     [SerializeField] int maxStackAmount;
+
+
 
     public void UseItem(int characterToUseOn)
     {
@@ -45,6 +48,14 @@ public class ItemData : ScriptableObject
                 selectedCharacter.AddMana(AmountOfEffect);
             }
         }
+        else if(type == ItemData.ItemType.Armor)
+        {
+            selectedCharacter.EquipArmor(ArmorDefence,ItemName);
+        }
+        else if (type == ItemData.ItemType.Weapon)
+        {
+            selectedCharacter.EquipWeapon(WeaponDamage,ItemName);
+        }
     }
 
     public ItemType Type { get { return type; } }
@@ -59,6 +70,7 @@ public class ItemData : ScriptableObject
     public int AmountOfEffect { get { return amountOfEffect; } set { amountOfEffect = value; } }
 
     public bool IsStackable { get { return isStackable; } set {isStackable = value; } }
+    public bool IsEquipped { get { return isEquipped; } set { isEquipped = value; } }
     public int StackAmount { get { return stackAmount; } set { stackAmount = value; } }
     public int MaxStackAmount { get { return maxStackAmount; } }
 }

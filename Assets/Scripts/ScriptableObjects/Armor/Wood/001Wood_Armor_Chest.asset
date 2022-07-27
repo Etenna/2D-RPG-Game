@@ -23,3 +23,7 @@ MonoBehaviour:
   armorDefence: 4
   typeEffect: 0
   amountOfEffect: 0
+  isStackable: 0
+  isEquipped: 0
+  stackAmount: 0
+  maxStackAmount: 0

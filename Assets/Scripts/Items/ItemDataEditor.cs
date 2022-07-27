@@ -21,6 +21,7 @@ public  class ItemDataEditor : Editor
     SerializedProperty _weaponDamage;
     SerializedProperty _amountOfEffect;
     SerializedProperty _isStackable;
+    SerializedProperty _isEquipped;
     SerializedProperty _stackAmount;
     SerializedProperty _maxStackAmount;
 
@@ -41,6 +42,7 @@ public  class ItemDataEditor : Editor
         _armorDefence = serializedObject.FindProperty("armorDefence");
         _amountOfEffect = serializedObject.FindProperty("amountOfEffect");
         _isStackable = serializedObject.FindProperty("isStackable");
+        _isEquipped = serializedObject.FindProperty("isEquipped");
         _stackAmount = serializedObject.FindProperty("stackAmount");
         _maxStackAmount = serializedObject.FindProperty("maxStackAmount");
 
@@ -61,11 +63,13 @@ public  class ItemDataEditor : Editor
         {
             EditorGUI.indentLevel++;
             EditorGUILayout.PropertyField(_weaponDamage, new GUIContent("Weapon Damage"));
+            EditorGUILayout.PropertyField(_isEquipped, new GUIContent("Equipped"));
             EditorGUI.indentLevel--;
         }
         else if (_itemType.intValue == 2)
         {
             EditorGUI.indentLevel++;
+            EditorGUILayout.PropertyField(_isEquipped, new GUIContent("Equipped"));
             EditorGUILayout.PropertyField(_armorType, new GUIContent("Armor Type"));
             EditorGUILayout.PropertyField(_armorDefence, new GUIContent("Armor Defence"));
             EditorGUI.indentLevel--;

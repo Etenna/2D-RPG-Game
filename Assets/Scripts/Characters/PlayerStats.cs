@@ -117,11 +117,21 @@ public class PlayerStats : MonoBehaviour
         weaponDamage+=amount;
         equippedWeaponName = itemName;
     }
-
+    public void UnEquipWeapon(int amount)
+    {
+        weaponDamage -= amount;
+        equippedWeaponName = "";
+    }
     public void EquipArmor(int amount, string itemName)
     {
         armorDefence+=amount;
         equippedArmorName = itemName;
+    }
+
+    public void UnEquipArmor(int amount)
+    {
+        armorDefence -= amount;
+        equippedArmorName = "";
     }
     public int GetPlayerLevel() => playerLevel;
     public string GetPlayerName() => playerName;

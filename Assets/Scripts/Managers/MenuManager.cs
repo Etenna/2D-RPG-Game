@@ -255,24 +255,13 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(SelectedFirstButton(itemsButton));
         UpdateStats();
 
-        switch (activeItem.Type)
-        {
-            case ItemData.ItemType.Armor:
-                Debug.Log("Armor selected");
-                break;
-            case ItemData.ItemType.Weapon:
-                Debug.Log("Weapon selected");
-                break;
-
-        }
-
-        if (!activeItem.IsEquipped && activeItem.Type == ItemData.ItemType.Armor || !activeItem.IsEquipped && activeItem.Type == ItemData.ItemType.Weapon)
+        if (!activeItem.IsEquipped && (activeItem.Type == ItemData.ItemType.Armor || activeItem.Type == ItemData.ItemType.Weapon))
         {
             activeItem.IsEquipped = true;
             UpdateItemsInventory();
             return;
         }
-        if (activeItem.IsEquipped && activeItem.Type == ItemData.ItemType.Armor || activeItem.IsEquipped && activeItem.Type == ItemData.ItemType.Weapon)
+        if (activeItem.IsEquipped && (activeItem.Type == ItemData.ItemType.Armor || activeItem.Type == ItemData.ItemType.Weapon))
         {
             activeItem.IsEquipped = false;
             UpdateItemsInventory();

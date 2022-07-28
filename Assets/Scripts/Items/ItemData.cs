@@ -50,11 +50,25 @@ public class ItemData : ScriptableObject
         }
         else if(type == ItemData.ItemType.Armor)
         {
-            selectedCharacter.EquipArmor(ArmorDefence,ItemName);
+            if (isEquipped)
+            {
+                selectedCharacter.UnEquipArmor(ArmorDefence);
+            }
+            else
+            {
+                selectedCharacter.EquipArmor(ArmorDefence,ItemName);
+            }
         }
         else if (type == ItemData.ItemType.Weapon)
         {
-            selectedCharacter.EquipWeapon(WeaponDamage,ItemName);
+            if (isEquipped)
+            {
+                selectedCharacter.UnEquipWeapon(WeaponDamage);
+            }
+            else
+            {
+                selectedCharacter.EquipWeapon(WeaponDamage,ItemName);
+            }
         }
     }
 
@@ -68,7 +82,6 @@ public class ItemData : ScriptableObject
     public int ArmorDefence { get { return armorDefence; } set { armorDefence = value; } }
     public TypeEffect Effect { get { return typeEffect; } }
     public int AmountOfEffect { get { return amountOfEffect; } set { amountOfEffect = value; } }
-
     public bool IsStackable { get { return isStackable; } set {isStackable = value; } }
     public bool IsEquipped { get { return isEquipped; } set { isEquipped = value; } }
     public int StackAmount { get { return stackAmount; } set { stackAmount = value; } }
